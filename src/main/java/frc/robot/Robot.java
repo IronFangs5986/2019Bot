@@ -1,7 +1,7 @@
 package frc.robot;
 
 import frc.robot.ADIS16448_IMU;
-
+import frc.robot.subsystems.Drive;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -15,6 +15,7 @@ public class Robot extends TimedRobot {
 
   /* Initialize OI and Subsystems */
   public static OI oi;
+  public static Drive driveTrain;
 
   /* Initialize and define NetworkTable 'SmartDashbaord' */
   NetworkTable table = NetworkTable.getTable("SmartDashboard");
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
     RobotMap.init();
 
     /* Define OI and Subsystems */
+    driveTrain = new Drive();
     oi = new OI();
 
     /* Push autonomous list into NetworkTables */

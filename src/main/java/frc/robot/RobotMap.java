@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 
 public class RobotMap {
 
@@ -22,6 +23,9 @@ public class RobotMap {
   /* Initialize compressor */
   public static Compressor compressor;
 
+  /* Initialize strafe solenoids */
+  public static Solenoid strafePiston;
+
   /* Initialize all components */
   public static void init() {
 
@@ -39,5 +43,8 @@ public class RobotMap {
 
     /* Define compressor */
     compressor = new Compressor(0);
+
+    /* Define strafe solenoid */
+    strafePiston = new Solenoid(0);
   }
 }

@@ -1,6 +1,6 @@
-package main.java.frc.robot;
+package frc.robot;
 
-import com.analog.adis16448.frc.ADIS16448_IMU;
+import frc.robot.ADIS16448_IMU;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -28,6 +28,9 @@ public class Robot extends TimedRobot {
   /* Define gyroscope class */
   public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 
+  /*
+   * This function is executed only once when the robot boots up
+   */
   @Override
   public void robotInit() {
     /* Initialize RobotMap */
@@ -44,6 +47,9 @@ public class Robot extends TimedRobot {
     table.putNumber("autoSelected", 0);
   }
 
+  /*
+   * This function is executed periodically in any mode (disabled, teleop, autonomous, etc.)
+   */
   @Override
   public void robotPeriodic() {
     /* Send gyroscope data to NetworkTables */
@@ -51,19 +57,28 @@ public class Robot extends TimedRobot {
     table.putNumber("Gyro-Y", imu.getAngleY());
     table.putNumber("Gyro-Z", imu.getAngleZ());
 
-    /* Send battery percentage to NetworkTables */
+    /* Send battery voltage to NetworkTables */
     table.putNumber("battery", DriverStation.getInstance().getBatteryVoltage());
   }
 
+  /*
+   * This function is executed only once when the robot changes into disabled mode
+   */
   @Override
   public void disabledInit() {
   }
 
+  /*
+   * This function is executed periodically when in disabled mode
+   */
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
   }
 
+  /*
+   * This function is executed only once when the robot changes into autonomous mode
+   */
   @Override
   public void autonomousInit() {
 
@@ -79,11 +94,17 @@ public class Robot extends TimedRobot {
     }
   }
 
+  /*
+   * This function is executed periodically when in autonomous mode
+   */
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
   }
 
+  /*
+   * This function is executed only once when the robot changes into teleop mode
+   */
   @Override
   public void teleopInit() {
 
@@ -93,12 +114,12 @@ public class Robot extends TimedRobot {
     }
   }
 
+  /*
+   * This function is executed periodically when in teleop mode
+   */
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
   }
 
-  @Override
-  public void testPeriodic() {
-  }
 }

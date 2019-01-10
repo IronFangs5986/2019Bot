@@ -3,9 +3,14 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 
+/*
+ * All universal variables and robot components are found here
+ */
 public class RobotMap {
 
   /* Initialize drive Talon variables */
@@ -26,7 +31,14 @@ public class RobotMap {
   /* Initialize strafe solenoids */
   public static Solenoid strafePiston;
 
-  /* Initialize all components */
+  /* Initialize encoders and information */
+  public static Encoder rightEncoder;
+  public static Encoder leftEncoder;
+  public static Encoder strafeEncoder;
+
+  /*
+   * Initialize all components
+   */
   public static void init() {
 
     /* Define drive Talons with CAN id */
@@ -46,5 +58,23 @@ public class RobotMap {
 
     /* Define strafe solenoid */
     strafePiston = new Solenoid(0);
+
+    /* Set up right encoder */
+    rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+    rightEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+    rightEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
+    rightEncoder.reset();
+
+    /* Set up left encoder */
+    leftEncoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
+    leftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+    leftEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
+    leftEncoder.reset();
+
+    /* Set up strafe encoder */
+    strafeEncoder = new Encoder(4, 5, true, Encoder.EncodingType.k4X);
+    strafeEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+    strafeEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
+    strafeEncoder.reset();
   }
 }

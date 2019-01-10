@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
+/*
+ * This is the "main" class 
+ */
 public class Robot extends TimedRobot {
 
   /* Initialize autonomousCommand to store chosen command */
@@ -24,7 +27,7 @@ public class Robot extends TimedRobot {
   private int mode = 0;
 
   /* Initialize and define autonomous modes list */
-  String[] autoList = { "" };
+  String[] autoList = { "" }; // List is currently empty :)
 
   /* Define gyroscope class */
   public static final ADIS16448_IMU imu = new ADIS16448_IMU();
@@ -50,7 +53,8 @@ public class Robot extends TimedRobot {
   }
 
   /*
-   * This function is executed periodically in any mode (disabled, teleop, autonomous, etc.)
+   * This function is executed periodically in any mode (disabled, teleop,
+   * autonomous, etc.)
    */
   @Override
   public void robotPeriodic() {
@@ -79,7 +83,8 @@ public class Robot extends TimedRobot {
   }
 
   /*
-   * This function is executed only once when the robot changes into autonomous mode
+   * This function is executed only once when the robot changes into autonomous
+   * mode
    */
   @Override
   public void autonomousInit() {

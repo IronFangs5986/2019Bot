@@ -68,4 +68,19 @@ public class Drive extends Subsystem {
     public double getStrafeDistance() {
         return RobotMap.strafeEncoder.getDistance();
     }
+
+    /*
+     * Stops tank drivetrain by setting speeds to 0
+     */
+    public void stopTank() {
+		robotDrive.arcadeDrive(0.0, 0.0);
+		robotDrive.tankDrive(0.0, 0.0);
+    }
+    
+    /*
+     * Stops strafe drivetrain by setting speeds to 0
+     */
+    public void stopStrafe() {
+		strafeyBois.set(0);
+	}
 }

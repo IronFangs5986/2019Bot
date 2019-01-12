@@ -41,11 +41,17 @@ public class Drive extends Subsystem {
     /*
      * Tank drive is used for autonomous
      */
-    public void tankDrive(double leftSpeed, double rightSpeed, double strafe) {
+    public void tankDrive(double leftSpeed, double rightSpeed) {
         /* Sets tankDrive values */
         robotDrive.tankDrive(leftSpeed, rightSpeed);
+    }
+
+    /*
+     *
+     */
+    public void strafeDrive(double speed) {
         /* Sets starafing motor speed */
-        strafeyBois.set(strafe);
+        strafeyBois.set(speed);
     }
 
     /*

@@ -1,12 +1,10 @@
-package frc.robot.autonomous;
+package frc.robot.autonomous.actions;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 /*
- * TO DO:
- * - NEEDS TO BE COMMENTED
- * - Get getSpeed function correct
+ * This command moves the robot straight a certain distance
  */
 public class StraightDrive extends Command {
 
@@ -90,7 +88,7 @@ public class StraightDrive extends Command {
     @Override
     protected boolean isFinished() {
         if (forwardMovement) {
-            /* Command ends if current distance is greater than the end distance  */
+            /* Command ends if current distance is greater than the end distance */
             return (Robot.driveTrain.getRightDistance() >= endDistanceR
                     || Robot.driveTrain.getLeftDistance() >= endDistanceL);
         } else {
@@ -118,8 +116,8 @@ public class StraightDrive extends Command {
     }
 
     /*
-     * Calculates speed based on distance to target.
-     * Demo of this function can be found here: https://www.desmos.com/calculator/2vsk4yz6rs
+     * Calculates speed based on distance to target. Demo of this function can be
+     * found here: https://www.desmos.com/calculator/2vsk4yz6rs
      */
     private double getSpeed(double current, double total) {
         double speed = (-1 / ((-1 - ((total - 1) / 2)) * (-1 - ((total - 1) / 2))));

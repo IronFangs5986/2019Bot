@@ -47,10 +47,10 @@ public class Drive extends Subsystem {
     }
 
     /*
-     *
+     * Strafeybois drive is used to move sideways
      */
-    public void strafeDrive(double speed) {
-        /* Sets starafing motor speed */
+    public void strafeyBoisDrive(double speed) {
+        /* Sets strafing motor speed */
         strafeyBois.set(speed);
     }
 
@@ -79,14 +79,14 @@ public class Drive extends Subsystem {
      * Stops tank drivetrain by setting speeds to 0
      */
     public void stopTank() {
-		robotDrive.arcadeDrive(0.0, 0.0);
-		robotDrive.tankDrive(0.0, 0.0);
+        robotDrive.arcadeDrive(0.0, 0.0);
+        robotDrive.tankDrive(0.0, 0.0);
     }
-    
+
     /*
      * Stops strafe drivetrain by setting speeds to 0
      */
-    public void stopStrafe() {
-		strafeyBois.set(0);
-	}
+    public void stopStrafeyBois() {
+        strafeyBois.set(0);
+    }
 }

@@ -29,9 +29,6 @@ public class Robot extends TimedRobot {
   /* Initialize and define autonomous modes list */
   String[] autoList = { "" }; // List is currently empty :)
 
-  /* Define gyroscope class */
-  public static final ADIS16448_IMU imu = new ADIS16448_IMU();
-
   /*
    * This function is executed only once when the robot boots up
    */
@@ -59,9 +56,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     /* Send gyroscope data to NetworkTables */
-    table.putNumber("Gyro-X", imu.getAngleX());
-    table.putNumber("Gyro-Y", imu.getAngleY());
-    table.putNumber("Gyro-Z", imu.getAngleZ());
+    table.putNumber("Gyro-X", RobotMap.gyro.getAngleX());
+    table.putNumber("Gyro-Y", RobotMap.gyro.getAngleY());
+    table.putNumber("Gyro-Z", RobotMap.gyro.getAngleZ());
 
     /* Send battery voltage to NetworkTables */
     table.putNumber("battery", DriverStation.getInstance().getBatteryVoltage());

@@ -36,6 +36,14 @@ public class RobotMap {
   public static Encoder leftEncoder;
   public static Encoder strafeEncoder;
 
+  /* Initialize gyroscope */
+  public static ADIS16448_IMU gyro;
+
+  /* Initialize robot measurements */
+  public static Double robotWidth;
+  public static Double robotLength;
+  public static Double robotHeight;
+
   /*
    * Initialize all components
    */
@@ -76,5 +84,13 @@ public class RobotMap {
     strafeEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
     strafeEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
     strafeEncoder.reset();
+
+    /* Define gyroscope class */
+    gyro = new ADIS16448_IMU();
+
+    /* Define robot measurements */
+    robotWidth = 24.0; // Unknown. Put 24in temporarily for testing purposes
+    robotLength = 0.0; // Unknown
+    robotHeight = 0.0; // Unknown
   }
 }

@@ -5,8 +5,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /*
  * All universal variables and robot components are found here
@@ -19,8 +20,12 @@ public class RobotMap {
   public static WPI_TalonSRX BackLeftMotor;
   public static WPI_TalonSRX BackRightMotor;
 
-  /* Initialize RobotDrive */
-  public static RobotDrive driveTrainRobotDrive;
+  /* Initialize DifferentialDrive */
+  public static DifferentialDrive robotDrive;
+
+  /* Initialize SpeedControllerGroups for DifferentialDrive */
+  public static SpeedControllerGroup leftGroup;
+  public static SpeedControllerGroup rightGroup;
 
   /* Initialize strafing Talon */
   public static WPI_TalonSRX strafeyBois;
@@ -56,8 +61,12 @@ public class RobotMap {
     BackLeftMotor = new WPI_TalonSRX(3);
     BackRightMotor = new WPI_TalonSRX(4);
 
-    /* Define RobotDrive with the drive Talons */
-    driveTrainRobotDrive = new RobotDrive(FrontLeftMotor, BackLeftMotor, FrontRightMotor, BackRightMotor);
+    /* Define SpeedControllerGroups for DifferentialDrive */
+    leftGroup = new SpeedControllerGroup(FrontLeftMotor, BackLeftMotor);
+    rightGroup = new SpeedControllerGroup(FrontRightMotor, BackRightMotor);
+
+    /* Define robotDrive as a DifferentialDrive for drivetrain */
+    robotDrive = new DifferentialDrive(leftGroup, rightGroup);
 
     /* Define strafing Talon with CAN id */
     strafeyBois = new WPI_TalonSRX(5);
@@ -93,6 +102,6 @@ public class RobotMap {
     robotWidth = 24.0; // Unknown. Put 24in temporarily for testing purposes
     robotLength = 0.0; // Unknown
     robotHeight = 0.0; // Unknown
-    minDriveSpeed = 0.3; //Unknown. Put 0.3 temporarily for testing purposes
+    minDriveSpeed = 0.3; // Unknown. Put 0.3 temporarily for testing purposes
   }
 }

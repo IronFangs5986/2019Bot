@@ -2,8 +2,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDrive;
 
@@ -12,8 +12,8 @@ import frc.robot.commands.ArcadeDrive;
  */
 public class Drive extends Subsystem {
 
-    /* Call RobotDrive defined in RobotMap */
-    RobotDrive robotDrive = RobotMap.driveTrainRobotDrive;
+    /* Call DifferentialDrive defined in RobotMap */
+    DifferentialDrive robotDrive = RobotMap.robotDrive;
     WPI_TalonSRX strafeyBois = RobotMap.strafeyBois;
 
     public Drive() {

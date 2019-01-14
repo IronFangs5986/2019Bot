@@ -39,10 +39,11 @@ public class RobotMap {
   /* Initialize gyroscope */
   public static ADIS16448_IMU gyro;
 
-  /* Initialize robot measurements */
+  /* Initialize robot information */
   public static Double robotWidth;
   public static Double robotLength;
   public static Double robotHeight;
+  public static Double minDriveSpeed;
 
   /*
    * Initialize all components
@@ -88,9 +89,10 @@ public class RobotMap {
     /* Define gyroscope class */
     gyro = new ADIS16448_IMU();
 
-    /* Define robot measurements */
+    /* Define robot information */
     robotWidth = 24.0; // Unknown. Put 24in temporarily for testing purposes
     robotLength = 0.0; // Unknown
     robotHeight = 0.0; // Unknown
+    minDriveSpeed = 0.3; //Unknown. Put 0.3 temporarily for testing purposes
   }
 }

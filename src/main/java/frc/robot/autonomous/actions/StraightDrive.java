@@ -2,6 +2,7 @@ package frc.robot.autonomous.actions;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 /*
  * This command moves the robot straight a certain distance
@@ -117,12 +118,16 @@ public class StraightDrive extends Command {
 
     /*
      * Calculates speed based on distance to target. Demo of this function can be
-     * found here: https://www.desmos.com/calculator/2vsk4yz6rs
+     * found here: https://www.desmos.com/calculator/mjxmn8nmug
      */
     private double getSpeed(double current, double total) {
         double speed = (-1 / ((-1 - ((total - 1) / 2)) * (-1 - ((total - 1) / 2))));
         speed = speed * (current - ((total - 1) / 2)) * (current - ((total - 1) / 2));
         speed = speed + 1;
-        return speed * -2;
+        speed = speed * -2;
+        if (speed < RobotMap.minDriveSpeed) {
+            speed = RobotMap.minDriveSpeed;
+        }
+        return speed;
     }
 }

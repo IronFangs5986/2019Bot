@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
   private int mode = 0;
 
   /* Initialize and define autonomous modes list */
-  String[] autoList = { "" }; // List is currently empty :)
+  String[] autoList = { "" }; // TODO Add autonomous modes when done
 
   /* Initialize Dashboard */
   Dashboard dashboard = new Dashboard();
@@ -64,6 +64,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    /* Send disabled robot mode to Dashboard*/
+    dashboard.setRobotMode("Disabled");
   }
 
   /*
@@ -80,6 +82,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+
+    /* Send autonomous robot mode to Dashboard*/
+    dashboard.setRobotMode("Autonomous");
 
     /* Set mode variable to the chosen autonomous mode id */
     mode = dashboard.getSelectedAutonomous();
@@ -110,6 +115,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopInit() {
+
+    /* Send teleop robot mode to Dashboard*/
+    dashboard.setRobotMode("Teleop");
 
     /* Stop the autonomous if it is still running */
     if (autonomousCommand != null) {

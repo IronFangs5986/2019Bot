@@ -22,6 +22,7 @@ public class Dashboard {
     NetworkTableEntry gyroY = table.getEntry("Gyro-Y");
     NetworkTableEntry gyroZ = table.getEntry("Gyro-Z");
     NetworkTableEntry autoList = table.getEntry("AutoList");
+    NetworkTableEntry robotMode = table.getEntry("RobotMode");
 
     /* Send battery voltage to NetworkTables */
     public void setBattery(Double voltage) {
@@ -48,5 +49,10 @@ public class Dashboard {
     /* Send the list of all autonomous modes to NetworkTables */
     public void setAutonomousList(String[] list) {
         autoList.setStringArray(list);
+    }
+
+    /* Send the current robot mode to NetworkTables (Disabled, Teleop, Autonomous)*/
+    public void setRobotMode(String mode) {
+        robotMode.setString(mode);
     }
 }

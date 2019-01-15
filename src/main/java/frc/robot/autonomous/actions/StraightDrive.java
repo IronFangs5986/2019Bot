@@ -124,7 +124,6 @@ public class StraightDrive extends Command {
         double speed = (-1 / ((-1 - ((total - 1) / 2)) * (-1 - ((total - 1) / 2))));
         speed = speed * (current - ((total - 1) / 2)) * (current - ((total - 1) / 2));
         speed = speed + 1;
-        speed = speed * -2;
         if (speed < RobotMap.minDriveSpeed) {
             speed = RobotMap.minDriveSpeed;
         }

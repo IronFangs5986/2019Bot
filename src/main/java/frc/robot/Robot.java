@@ -57,6 +57,9 @@ public class Robot extends TimedRobot {
 
     /* Send battery voltage to Dashboard */
     dashboard.setBattery(RobotController.getBatteryVoltage());
+
+    /* Send compressor state to Dashboard */
+    dashboard.setCompressorState(RobotMap.compressor.enabled());
   }
 
   /*

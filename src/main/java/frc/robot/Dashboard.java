@@ -12,8 +12,8 @@ public class Dashboard {
     /* Initialize NetworkTables instance */
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
-    /* Fetch table '' from NetworkTables */
-    NetworkTable table = inst.getTable("SmartDashboard");
+    /* Fetch table 'FangsDashboard' from NetworkTables */
+    NetworkTable table = inst.getTable("FangsDashboard");
 
     /* Define NetworkTable entries */
     NetworkTableEntry battery = table.getEntry("battery");
@@ -23,6 +23,7 @@ public class Dashboard {
     NetworkTableEntry gyroZ = table.getEntry("Gyro-Z");
     NetworkTableEntry autoList = table.getEntry("AutoList");
     NetworkTableEntry robotMode = table.getEntry("RobotMode");
+    NetworkTableEntry compState = table.getEntry("CompressorState");
 
     /* Send battery voltage to NetworkTables */
     public void setBattery(Double voltage) {
@@ -54,5 +55,10 @@ public class Dashboard {
     /* Send the current robot mode to NetworkTables (Disabled, Teleop, Autonomous)*/
     public void setRobotMode(String mode) {
         robotMode.setString(mode);
+    }
+
+    /* Send the compressor state to NetworkTables */
+    public void setCompressorState(Boolean enabled) {
+        compState.setBoolean(enabled);
     }
 }

@@ -1,6 +1,6 @@
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Encoder;
@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class RobotMap {
 
-  /* Initialize drive Talon variables */
-  public static WPI_TalonSRX FrontLeftMotor;
-  public static WPI_TalonSRX FrontRightMotor;
-  public static WPI_TalonSRX BackLeftMotor;
-  public static WPI_TalonSRX BackRightMotor;
+  /* Initialize drive Victor variables */
+  public static WPI_VictorSPX FrontLeftMotor;
+  public static WPI_VictorSPX FrontRightMotor;
+  public static WPI_VictorSPX BackLeftMotor;
+  public static WPI_VictorSPX BackRightMotor;
 
   /* Initialize DifferentialDrive */
   public static DifferentialDrive robotDrive;
@@ -27,8 +27,8 @@ public class RobotMap {
   public static SpeedControllerGroup leftGroup;
   public static SpeedControllerGroup rightGroup;
 
-  /* Initialize strafing Talon */
-  public static WPI_TalonSRX strafeyBois;
+  /* Initialize strafing Victor */
+  public static WPI_VictorSPX strafeyBois;
 
   /* Initialize compressor */
   public static Compressor compressor;
@@ -55,11 +55,11 @@ public class RobotMap {
    */
   public static void init() {
 
-    /* Define drive Talons with CAN id */
-    FrontLeftMotor = new WPI_TalonSRX(1);
-    FrontRightMotor = new WPI_TalonSRX(2);
-    BackLeftMotor = new WPI_TalonSRX(3);
-    BackRightMotor = new WPI_TalonSRX(4);
+    /* Define drive Victors with CAN id */
+    FrontLeftMotor = new WPI_VictorSPX(1);
+    FrontRightMotor = new WPI_VictorSPX(2);
+    BackLeftMotor = new WPI_VictorSPX(3);
+    BackRightMotor = new WPI_VictorSPX(4);
 
     /* Define SpeedControllerGroups for DifferentialDrive */
     leftGroup = new SpeedControllerGroup(FrontLeftMotor, BackLeftMotor);
@@ -68,8 +68,8 @@ public class RobotMap {
     /* Define robotDrive as a DifferentialDrive for drivetrain */
     robotDrive = new DifferentialDrive(leftGroup, rightGroup);
 
-    /* Define strafing Talon with CAN id */
-    strafeyBois = new WPI_TalonSRX(5);
+    /* Define strafing Victor with CAN id */
+    strafeyBois = new WPI_VictorSPX(5);
 
     /* Define compressor */
     compressor = new Compressor(0);

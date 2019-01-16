@@ -1,6 +1,6 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -14,7 +14,7 @@ public class Drive extends Subsystem {
 
     /* Call DifferentialDrive defined in RobotMap */
     DifferentialDrive robotDrive = RobotMap.robotDrive;
-    WPI_TalonSRX strafeyBois = RobotMap.strafeyBois;
+    WPI_VictorSPX strafeyBois = RobotMap.strafeyBois;
 
     public Drive() {
 
@@ -34,6 +34,16 @@ public class Drive extends Subsystem {
     public void arcadeDrive(double moveAxis, double rotateAxis, double strafe) {
         /* Sets arcadeDrive values */
         robotDrive.arcadeDrive(moveAxis, rotateAxis);
+        /* Sets strafing motor speed */
+        strafeyBois.set(strafe);
+    }
+
+    /*
+     * Arcade drive is used for teleop (manual driving) straight driving
+     */
+    public void curvatureDrive(double moveAxis, double rotateAxis, double strafe, boolean turn) {
+        /* Sets curvatureDrive values */
+        robotDrive.curvatureDrive(moveAxis, rotateAxis, turn);
         /* Sets strafing motor speed */
         strafeyBois.set(strafe);
     }

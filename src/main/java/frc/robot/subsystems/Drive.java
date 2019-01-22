@@ -1,7 +1,10 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -98,5 +101,51 @@ public class Drive extends Subsystem {
      */
     public void stopStrafeyBois() {
         strafeyBois.set(0);
+    }
+
+    /*
+     * Tests subsystem to make sure all components in drivetrain work
+     */
+    public void checkSystem() {
+        WPI_VictorSPX frontRight = RobotMap.FrontRightMotor;
+        WPI_VictorSPX frontLeft = RobotMap.FrontLeftMotor;
+        WPI_VictorSPX backRight = RobotMap.BackRightMotor;
+        WPI_VictorSPX backLeft = RobotMap.BackLeftMotor;
+        WPI_VictorSPX strafeyBois = RobotMap.strafeyBois;
+
+        frontRight.set(0);
+        frontLeft.set(0);
+        backRight.set(0);
+        backLeft.set(0);
+        strafeyBois.set(0);
+        
+        frontRight.set(.6);
+        frontLeft.set(.6);
+        backRight.set(.6);
+        backLeft.set(.6);
+
+        Timer.delay(2.0);
+        
+        frontRight.set(-.6);
+        frontLeft.set(-.6);
+        backRight.set(-.6);
+        backLeft.set(-.6);
+
+        Timer.delay(2.0);
+
+        frontRight.set(0);
+        frontLeft.set(0);
+        backRight.set(0);
+        backLeft.set(0);
+        strafeyBois.set(.6);
+
+        Timer.delay(2.0);
+
+        strafeyBois.set(-.6);
+
+        Timer.delay(2.0);
+
+        strafeyBois.set(0);
+
     }
 }

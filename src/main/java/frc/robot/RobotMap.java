@@ -33,8 +33,11 @@ public class RobotMap {
   /* Initialize compressor */
   public static Compressor compressor;
 
-  /* Initialize strafe solenoids */
+  /* Initialize solenoids */
   public static Solenoid strafePiston;
+  public static Solenoid hatchHolderPiston;
+  public static Solenoid hatchSliderPiston;
+  public static Solenoid cargoShooterPiston;
 
   /* Initialize encoders and information */
   public static Encoder rightEncoder;
@@ -74,8 +77,11 @@ public class RobotMap {
     /* Define compressor */
     compressor = new Compressor(0);
 
-    /* Define strafe solenoid */
+    /* Define solenoids */
     strafePiston = new Solenoid(0);
+    hatchHolderPiston = new Solenoid(1);
+    hatchSliderPiston = new Solenoid(2);
+    cargoShooterPiston = new Solenoid(3);
 
     /* Set up right encoder */
     rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);

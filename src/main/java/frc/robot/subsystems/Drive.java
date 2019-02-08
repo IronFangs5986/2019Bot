@@ -19,9 +19,7 @@ public class Drive extends Subsystem {
     DifferentialDrive robotDrive = RobotMap.robotDrive;
     WPI_VictorSPX strafeyBois = RobotMap.strafeyBois;
 
-    public Drive() {
-
-    }
+    public Drive() {}
 
     /*
      * Sets ArcadeDrive as default command to execute
@@ -101,6 +99,20 @@ public class Drive extends Subsystem {
      */
     public void stopStrafeyBois() {
         strafeyBois.set(0);
+    }
+
+    /*
+     * Rise Strafey Bois mechanism
+     */
+    public void riseStrafeyBois() {
+        RobotMap.strafePiston.set(true);
+    }
+
+    /*
+     * Lower Strafey Bois mechanism
+     */
+    public void lowerStrafeyBois() {
+        RobotMap.strafePiston.set(false);
     }
 
     /*

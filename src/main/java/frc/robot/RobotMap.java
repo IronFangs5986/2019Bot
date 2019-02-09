@@ -30,6 +30,9 @@ public class RobotMap {
   /* Initialize strafing Victor */
   public static WPI_VictorSPX strafeyBois;
 
+  /* Initialize elevator Victor*/
+  public static WPI_VictorSPX elevator;
+
   /* Initialize compressor */
   public static Compressor compressor;
 
@@ -73,6 +76,9 @@ public class RobotMap {
 
     /* Define strafing Victor with CAN id */
     strafeyBois = new WPI_VictorSPX(5);
+
+    /* Define elevator Victor with CAN id */
+    elevator = new WPI_VictorSPX(6);
 
     /* Define compressor */
     compressor = new Compressor(0);

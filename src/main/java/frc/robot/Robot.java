@@ -1,6 +1,8 @@
 package frc.robot;
 
+import frc.robot.subsystems.CargoShooter;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.HatchHolder;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,6 +19,8 @@ public class Robot extends TimedRobot {
   /* Initialize OI and Subsystems */
   public static OI oi;
   public static Drive driveTrain;
+  public static HatchHolder hatchHolder;
+  public static CargoShooter cargoShooter;
 
   /* Define default autonomous mode id */
   private int mode = 0;
@@ -37,6 +41,8 @@ public class Robot extends TimedRobot {
 
     /* Define OI and Subsystems */
     driveTrain = new Drive();
+    hatchHolder = new HatchHolder();
+    cargoShooter = new CargoShooter();
     oi = new OI();
 
     /* Push autonomous list to Dashboard */

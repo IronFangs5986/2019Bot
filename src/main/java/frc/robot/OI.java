@@ -15,6 +15,7 @@ public class OI {
   /* Define buttons */
   public JoystickButton strafeyBoisDown;
   public JoystickButton strafeyBoisUp;
+  public JoystickButton shootCargo;
 
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
@@ -23,11 +24,10 @@ public class OI {
     driver = new Joystick(1);
 
     /* Assign button id to buttons */
-    strafeyBoisDown = new JoystickButton(driver, 1); //Unknown button id
-    strafeyBoisUp = new JoystickButton(driver, 1); //Unknown button id
+    shootCargo = new JoystickButton(driver, 2);
 
     /* Handle button presses */
-    strafeyBoisDown.whenPressed(new MoveStrafeyBois(false));
-    strafeyBoisUp.whenPressed(new MoveStrafeyBois(false));
+    shootCargo.whenPressed(new MoveStrafeyBois(false));
+    shootCargo.whenReleased(new MoveStrafeyBois(true));
   }
 }

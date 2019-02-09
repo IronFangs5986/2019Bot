@@ -3,6 +3,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -49,6 +50,11 @@ public class RobotMap {
 
   /* Initialize gyroscope */
   public static ADIS16448_IMU gyro;
+
+  /* Initialize hall effect sensors */
+  public static DigitalInput bottomSensor;
+  public static DigitalInput middleSensor;
+  public static DigitalInput topSensor;
 
   /* Initialize robot information */
   public static Double robotWidth;
@@ -109,6 +115,11 @@ public class RobotMap {
 
     /* Define gyroscope class */
     gyro = new ADIS16448_IMU();
+
+    /* Define hall effect sensors */
+    bottomSensor = new DigitalInput(0);
+    middleSensor = new DigitalInput(1);
+    topSensor = new DigitalInput(2);
 
     /* Define robot information */
     robotWidth = 24.0; // Unknown. Put 24in temporarily for testing purposes

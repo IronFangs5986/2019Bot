@@ -2,6 +2,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ActivateCargoIntake;
+import frc.robot.commands.ActivateHatchHolder;
 import frc.robot.commands.MoveStrafeyBois;
 
 /*
@@ -13,10 +15,9 @@ public class OI {
   public static Joystick driver;
 
   /* Define buttons */
-  public JoystickButton strafeyBoisDown;
-  public JoystickButton strafeyBoisUp;
   public JoystickButton shootCargo;
-
+  public JoystickButton intakeCargo;
+  public JoystickButton activateHatchHolder;
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
 
@@ -25,9 +26,15 @@ public class OI {
 
     /* Assign button id to buttons */
     shootCargo = new JoystickButton(driver, 2);
+    intakeCargo = new JoystickButton(driver, 0); //Unknown button id
+    activateHatchHolder = new JoystickButton(driver, 0); //Unknown button id
 
     /* Handle button presses */
     shootCargo.whenPressed(new MoveStrafeyBois(false));
     shootCargo.whenReleased(new MoveStrafeyBois(true));
+    intakeCargo.whenPressed(new ActivateCargoIntake(true));
+    intakeCargo.whenReleased(new ActivateCargoIntake(false));
+    activateHatchHolder.whenPressed(new ActivateHatchHolder(true));
+    activateHatchHolder.whenReleased(new ActivateHatchHolder(false));
   }
 }

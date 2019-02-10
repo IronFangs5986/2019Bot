@@ -31,8 +31,11 @@ public class RobotMap {
   /* Initialize strafing Victor */
   public static WPI_VictorSPX strafeyBois;
 
-  /* Initialize elevator Victor*/
+  /* Initialize elevator Victor */
   public static WPI_VictorSPX elevator;
+
+  /* Initialize cargo intake Victor */
+  public static WPI_VictorSPX cargoIntake;
 
   /* Initialize compressor */
   public static Compressor compressor;
@@ -42,6 +45,7 @@ public class RobotMap {
   public static Solenoid hatchHolderPiston;
   public static Solenoid hatchSliderPiston;
   public static Solenoid cargoShooterPiston;
+  public static Solenoid cargoIntakePiston;
 
   /* Initialize encoders and information */
   public static Encoder rightEncoder;
@@ -86,6 +90,9 @@ public class RobotMap {
     /* Define elevator Victor with CAN id */
     elevator = new WPI_VictorSPX(6);
 
+    /* Define cargo intake Victor with CAN id */
+    cargoIntake = new WPI_VictorSPX(7);
+
     /* Define compressor */
     compressor = new Compressor(0);
 
@@ -94,6 +101,7 @@ public class RobotMap {
     hatchHolderPiston = new Solenoid(1);
     hatchSliderPiston = new Solenoid(2);
     cargoShooterPiston = new Solenoid(3);
+    cargoIntakePiston = new Solenoid(4);
 
     /* Set up right encoder */
     rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);

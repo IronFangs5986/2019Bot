@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 /*
- * This is the HatchHolder subsystem where anything related to cargo is found
+ * This is the CargoShooter subsystem where anything related to the cargo shooter is found
  */
 public class CargoShooter extends Subsystem {
 

@@ -1,5 +1,6 @@
 package frc.robot;
 
+import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.CargoShooter;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Elevator;
@@ -23,6 +24,7 @@ public class Robot extends TimedRobot {
   public static HatchHolder hatchHolder;
   public static CargoShooter cargoShooter;
   public static Elevator elevator;
+  public static CargoIntake cargoIntake;
 
   /* Define default autonomous mode id */
   private int mode = 0;
@@ -46,6 +48,7 @@ public class Robot extends TimedRobot {
     hatchHolder = new HatchHolder();
     cargoShooter = new CargoShooter();
     elevator = new Elevator();
+    cargoIntake = new CargoIntake();
     oi = new OI();
 
     /* Push autonomous list to Dashboard */

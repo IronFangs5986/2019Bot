@@ -1,5 +1,6 @@
 package frc.robot;
 
+import frc.robot.autonomous.paths.SamplePath;
 import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.CargoShooter;
 import frc.robot.subsystems.Drive;
@@ -30,7 +31,7 @@ public class Robot extends TimedRobot {
   private int mode = 0;
 
   /* Initialize and define autonomous modes list */
-  String[] autoList = { "" }; // TODO Add autonomous modes when done
+  String[] autoList = { "Drive", "Sample" }; // TODO Add autonomous modes when done
 
   /* Initialize Dashboard */
   Dashboard dashboard = new Dashboard();
@@ -106,9 +107,12 @@ public class Robot extends TimedRobot {
 
     /* Set autonomousCommand to the right command according to the mode variable */
     if (mode == 0) {
-      // TODO Set autonomous modes
+      /* Manual driving using camera, leave autonomousCommand as null */
+    } else if (mode == 1) {
+      /* SamplePath selected*/
+      autonomousCommand = (Command) new SamplePath();
     } else {
-      /* Run a default command */
+      /* Manual driving using camera as last resort, leave autonomousCommand as null */
     }
 
     /* Start the autonomous command if it has not been started already */
@@ -123,6 +127,13 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+
+    /* Emergency autonomous shutdown */
+    if (OI.driver.getRawButton(0)) { //Unknown button id
+      if (autonomousCommand != null) {
+        autonomousCommand.cancel();
+      }
+    }
   }
 
   /*

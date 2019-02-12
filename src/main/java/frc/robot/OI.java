@@ -18,6 +18,7 @@ public class OI {
   public JoystickButton shootCargo;
   public JoystickButton intakeCargo;
   public JoystickButton activateHatchHolder;
+  
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
 

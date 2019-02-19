@@ -27,6 +27,9 @@ public class Robot extends TimedRobot {
   public static Elevator elevator;
   public static CargoIntake cargoIntake;
 
+  /* Initialize the tracking camera */
+  public static Tracking trackingCam;
+
   /* Define default autonomous mode id */
   private int mode = 0;
 
@@ -52,6 +55,10 @@ public class Robot extends TimedRobot {
     cargoIntake = new CargoIntake();
     oi = new OI();
 
+    /* Define the tracking camera and start stream 1*/
+    trackingCam = new Tracking();
+    trackingCam.startCameraStream1();
+    
     /* Push autonomous list to Dashboard */
     dashboard.setAutonomousList(autoList);
 
@@ -73,6 +80,9 @@ public class Robot extends TimedRobot {
 
     /* Send compressor state to Dashboard */
     dashboard.setCompressorState(RobotMap.compressor.enabled());
+
+    /* Send camera tracking status to Dashboard */
+    dashboard.setCameraTrackingStatus(trackingCam.getValidConn());
   }
 
   /*

@@ -24,6 +24,7 @@ public class Dashboard {
     NetworkTableEntry autoList = table.getEntry("AutoList");
     NetworkTableEntry robotMode = table.getEntry("RobotMode");
     NetworkTableEntry compState = table.getEntry("CompressorState");
+    NetworkTableEntry cameraActive = table.getEntry("CameraActive");
 
     /* Send battery voltage to NetworkTables */
     public void setBattery(Double voltage) {
@@ -60,5 +61,10 @@ public class Dashboard {
     /* Send the compressor state to NetworkTables */
     public void setCompressorState(Boolean enabled) {
         compState.setBoolean(enabled);
+    }
+
+    /* Send the compressor state to NetworkTables */
+    public void setCameraTrackingStatus(Boolean active) {
+        cameraActive.setBoolean(active);
     }
 }

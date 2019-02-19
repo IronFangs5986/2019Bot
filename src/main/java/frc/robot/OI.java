@@ -26,9 +26,9 @@ public class OI {
     driver = new Joystick(1);
 
     /* Assign button id to buttons */
-    shootCargo = new JoystickButton(driver, 2);
-    intakeCargo = new JoystickButton(driver, 0); //Unknown button id
-    activateHatchHolder = new JoystickButton(driver, 0); //Unknown button id
+    shootCargo = new JoystickButton(driver, 4);
+    intakeCargo = new JoystickButton(driver, 2);
+    activateHatchHolder = new JoystickButton(driver, 1);
 
     /* Handle button presses */
     shootCargo.whenPressed(new MoveStrafeyBois(false));

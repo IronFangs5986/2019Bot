@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.SpinElevator;
 
 /*
  * This is the Elevator subsystem where anything related to the elevator is found
@@ -17,7 +18,7 @@ public class Elevator extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new SpinElevator());
     }
 
     /*
@@ -54,6 +55,13 @@ public class Elevator extends Subsystem {
         } else {
             return 0;
         }
+    }
+
+    /*
+     * Sets the motor spin
+     */
+    public void spin(Double speed) {
+        RobotMap.elevatorSpin.set(speed);
     }
 
 }

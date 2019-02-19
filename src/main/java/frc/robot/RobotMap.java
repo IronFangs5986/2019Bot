@@ -34,6 +34,9 @@ public class RobotMap {
   /* Initialize elevator Victor */
   public static WPI_VictorSPX elevator;
 
+  /* Initialize elevator spin Victor */
+  public static WPI_VictorSPX elevatorSpin;
+
   /* Initialize cargo intake Victor */
   public static WPI_VictorSPX cargoIntake;
 
@@ -90,8 +93,11 @@ public class RobotMap {
     /* Define elevator Victor with CAN id */
     elevator = new WPI_VictorSPX(6);
 
+    /* Define elevator spin Victor with CAN id */
+    elevatorSpin = new WPI_VictorSPX(7);
+
     /* Define cargo intake Victor with CAN id */
-    cargoIntake = new WPI_VictorSPX(7);
+    cargoIntake = new WPI_VictorSPX(8);
 
     /* Define compressor */
     compressor = new Compressor(0);
@@ -125,9 +131,9 @@ public class RobotMap {
     gyro = new ADIS16448_IMU();
 
     /* Define hall effect sensors */
-    bottomSensor = new DigitalInput(0);
+    /*bottomSensor = new DigitalInput(0);
     middleSensor = new DigitalInput(1);
-    topSensor = new DigitalInput(2);
+    topSensor = new DigitalInput(2);*/
 
     /* Define robot information */
     robotWidth = 24.0; // Unknown. Put 24in temporarily for testing purposes

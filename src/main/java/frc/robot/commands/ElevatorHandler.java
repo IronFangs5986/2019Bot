@@ -28,12 +28,6 @@ public class ElevatorHandler extends Command {
                 Command command = new MoveElevator(true);
                 command.start();
                 command.close();
-            } else if (OI.driver.getPOV() == 90) {
-                /* Start cooldown*/
-                cooldown++;
-
-                /* POV is right, and turns elevator right */
-
             } else if (OI.driver.getPOV() == 180) {
                 /* Start cooldown*/
                 cooldown++;
@@ -42,12 +36,6 @@ public class ElevatorHandler extends Command {
                 Command command = new MoveElevator(false);
                 command.start();
                 command.close();
-            } else if (OI.driver.getPOV() == 270) {
-                /* Start cooldown*/
-                cooldown++;
-
-                /* POV is left, and turns elevator left */
-
             }
         } else {
             /* Checks if cooldown is enough to reset, or keeps counting */

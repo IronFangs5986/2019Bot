@@ -10,21 +10,41 @@ import frc.robot.RobotMap;
 public class MoveElevator extends Command {
 
     /* Boolean that holds wether the elevator moves up or down */
+    int target;
+    double startingPosition;
+    double targetDistance;
     boolean moveUp;
-    int startingPosition;
-
     /*
-     * Require the `up` parameter to know wether to move the elevator up or down
+     * Require the `position` parameter to know what position to move the elevator
+     * 
+     *    1 - Rocket Bottom and Cargo Ship Hatch Panel
+     *    2 - Rocket Middle Hatch Panel
+     *    3 - Rocket Top Hatch Panel
+     *    4 - Rocket Bottom Cargo
+     *    5 - Rocket Middle Cargo
+     *    6 - Rocket Top Cargo
+     *    7 - Cargo Ship Cargo
+     * 
      */
-    public MoveElevator(boolean up) {
+    public MoveElevator(int position) {
         /* Require the elevator subsystem */
         requires(Robot.elevator);
 
-        /* Set the `moveUp` variable to the value which the command was called with */
-        moveUp = up;
+        /* Set the `target` variable to the value which the command was called with */
+        target = position;
 
         /* Set the current (starting) position of the elevator to determine when to stop */
         startingPosition = Robot.elevator.getCurrentPosition();
+
+        /* Set the position of the target */
+        targetDistance = getTargetDistance(position);
+
+        /* Determines wether to move up or down */
+        if (startingPosition > targetDistance) {
+            moveUp = false;
+        } else {
+            moveUp = true;
+        }
     }
 
     /*
@@ -34,13 +54,13 @@ public class MoveElevator extends Command {
 
         /* Checks if the elevator should and can move up or down, and executes the right command */
         if (moveUp) {
-            if (!RobotMap.topSensor.get()) {
-               Robot.elevator.moveUp(); 
+            if (Robot.elevator.getCurrentPosition() < Robot.elevator.maximum) {
+               Robot.elevator.moveUp(getSpeed(Robot.elevator.getCurrentPosition(), targetDistance)); 
             }
         } else {
-            if (!RobotMap.bottomSensor.get()) {
+            if (Robot.elevator.getCurrentPosition() > Robot.elevator.minimum) {
                 Robot.elevator.moveDown(); 
-            }
+             }
         }
     }
 
@@ -49,25 +69,17 @@ public class MoveElevator extends Command {
      */
     @Override
     protected boolean isFinished() {
-        if (startingPosition == 0) {
-            if (Robot.elevator.getCurrentPosition() != 0) {
+        if (moveUp) {
+            if (Robot.elevator.getCurrentPosition() >= targetDistance) {
                 return true;
             } else {
                 return false;
             }
         } else {
-            if (moveUp) {
-                if (Robot.elevator.getCurrentPosition() > startingPosition && Robot.elevator.getCurrentPosition() != 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+            if (Robot.elevator.getCurrentPosition() <= targetDistance) {
+                return true;
             } else {
-                if (Robot.elevator.getCurrentPosition() < startingPosition && Robot.elevator.getCurrentPosition() != 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return false;
             }
         }
     }
@@ -80,9 +92,46 @@ public class MoveElevator extends Command {
 	}
 
     /*
-     * Ends the command if the command is interrupted
+     * Ends the command of autonomous is stopped or interrupted
      */
-	protected void interrupted() {
-		end();
-	}
+    protected void interrupted() {
+        end();
+    }
+
+    /*
+     * Returns the position of the target defined in Elevator.java
+     */
+    protected double getTargetDistance(int target) {
+        if (target == 1) {
+            return (Robot.elevator.bottomHatchLow + Robot.elevator.bottomHatchHigh)/2;
+        } else if (target == 2) {
+            return (Robot.elevator.middleHatchLow + Robot.elevator.middleHatchHigh)/2;
+        } else if (target == 3) {
+            return (Robot.elevator.topHatchLow + Robot.elevator.topHatchHigh)/2;
+        } else if (target == 4) {
+            return (Robot.elevator.bottomCargoLow + Robot.elevator.bottomCargoHigh)/2;
+        } else if (target == 5) {
+            return (Robot.elevator.middleCargoLow + Robot.elevator.middleCargoHigh)/2;
+        } else if (target == 6) {
+            return (Robot.elevator.topCargoLow + Robot.elevator.topCargoHigh)/2;
+        } else if (target == 7) {
+            return (Robot.elevator.shipCargoLow + Robot.elevator.shipCargoHigh)/2;
+        } else {
+            return 0.0;
+        }
+    }
+
+    /*
+     * Calculates speed based on distance to target. Demo of this function can be
+     * found here: https://www.desmos.com/calculator/mjxmn8nmug
+     */
+    private double getSpeed(double current, double total) {
+        double speed = (-1 / ((-1 - ((total - 1) / 2)) * (-1 - ((total - 1) / 2))));
+        speed = speed * (current - ((total - 1) / 2)) * (current - ((total - 1) / 2));
+        speed = speed + 1;
+        if (speed < RobotMap.minDriveSpeed) {
+            speed = RobotMap.minDriveSpeed;
+        }
+        return speed;
+    }
 }

@@ -13,6 +13,7 @@ public class OI {
 
   /* Define joysticks and controllers */
   public static Joystick driver;
+  public static Joystick operator;
 
   /* Define buttons */
   public JoystickButton shootCargo;
@@ -24,6 +25,7 @@ public class OI {
 
     /* Assign joystick id to joystick */
     driver = new Joystick(1);
+    operator = new Joystick(2);
 
     /* Assign button id to buttons */
     shootCargo = new JoystickButton(driver, 4);

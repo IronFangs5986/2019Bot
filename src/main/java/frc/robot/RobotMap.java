@@ -53,15 +53,13 @@ public class RobotMap {
   /* Initialize encoders and information */
   public static Encoder rightEncoder;
   public static Encoder leftEncoder;
-  public static Encoder strafeEncoder;
+  public static Encoder liftEncoder;
 
   /* Initialize gyroscope */
   public static ADIS16448_IMU gyro;
 
   /* Initialize hall effect sensors */
-  public static DigitalInput bottomSensor;
-  public static DigitalInput middleSensor;
-  public static DigitalInput topSensor;
+  public static DigitalInput liftResetSensor;
 
   /* Initialize robot information */
   public static Double robotWidth;
@@ -113,27 +111,28 @@ public class RobotMap {
     rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     rightEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
     rightEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
+    rightEncoder.setReverseDirection(false);
     rightEncoder.reset();
 
     /* Set up left encoder */
     leftEncoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
     leftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
     leftEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
+    leftEncoder.setReverseDirection(false);
     leftEncoder.reset();
 
-    /* Set up strafe encoder */
-    strafeEncoder = new Encoder(4, 5, true, Encoder.EncodingType.k4X);
-    strafeEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-    strafeEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
-    strafeEncoder.reset();
+    /* Set up elevator lift encoder */
+    liftEncoder = new Encoder(4, 5, true, Encoder.EncodingType.k4X);
+    liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+    liftEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
+    liftEncoder.setReverseDirection(false);
+    liftEncoder.reset();
 
     /* Define gyroscope class */
     gyro = new ADIS16448_IMU();
 
     /* Define hall effect sensors */
-    /*bottomSensor = new DigitalInput(0);
-    middleSensor = new DigitalInput(1);
-    topSensor = new DigitalInput(2);*/
+    /*liftResetSensor = new DigitalInput(8);*/
 
     /* Define robot information */
     robotWidth = 24.0; // Unknown. Put 24in temporarily for testing purposes

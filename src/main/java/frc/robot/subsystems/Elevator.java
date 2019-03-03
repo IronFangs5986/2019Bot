@@ -24,15 +24,15 @@ public class Elevator extends Subsystem {
     /*
      * Sets the elevator to move up
      */
-    public void moveUp() {
-        elevator.set(1);
+    public void moveUp(double speed) {
+        elevator.set(speed);
     }
 
     /*
      * Sets the elevator to move down
      */
     public void moveDown() {
-        elevator.set(-.7);
+        elevator.set(0);
     }
 
     /*
@@ -43,18 +43,10 @@ public class Elevator extends Subsystem {
     }
 
     /*
-     * Determines the current elevator position based on hall effect sensors. Returns 0 if for some reason none of the sensors detect the elevator
+     * Determines the current elevator distance based on an encoder.
      */
-    public int getCurrentPosition() {
-        if (RobotMap.bottomSensor.get()) {
-            return 1;
-        } else if (RobotMap.middleSensor.get()) {
-            return 2;
-        } else if (RobotMap.topSensor.get()) {
-            return 3;
-        } else {
-            return 0;
-        }
+    public double getCurrentPosition() {
+        return RobotMap.liftEncoder.getDistance();
     }
 
     /*
@@ -64,4 +56,33 @@ public class Elevator extends Subsystem {
         RobotMap.elevatorSpin.set(speed);
     }
 
+    /*
+     * Resets elevator encoder
+     */
+    public void reset() {
+        RobotMap.liftEncoder.reset();
+    }
+
+    /*
+     * Set public values of elevator distances of minimum and maximum for each target
+     */
+    public double bottomHatchLow = 0.0; // Unknown
+    public double bottomHatchHigh = 0.0; // Unknown
+    public double middleHatchLow = 0.0; // Unknown
+    public double middleHatchHigh = 0.0; // Unknown
+    public double topHatchLow = 0.0; // Unknown
+    public double topHatchHigh = 0.0; // Unknown
+
+    public double bottomCargoLow = 0.0; // Unknown
+    public double bottomCargoHigh = 0.0; // Unknown
+    public double middleCargoLow = 0.0; // Unknown
+    public double middleCargoHigh = 0.0; // Unknown
+    public double topCargoLow = 0.0; // Unknown
+    public double topCargoHigh = 0.0; // Unknown
+
+    public double shipCargoLow = 0.0; // Unknown
+    public double shipCargoHigh = 0.0; // Unknown
+
+    public double minimum = 0.0; // Unknown
+    public double maximum = 0.0; // Unknown
 }

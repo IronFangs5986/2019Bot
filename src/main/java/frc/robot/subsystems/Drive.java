@@ -42,7 +42,7 @@ public class Drive extends Subsystem {
         /*
          * Automatically drop Strafey Bois when they move
          */
-        if (Math.abs(strafe) >= .2) {
+        if (Math.abs(strafe) >= .4) {
             System.out.println("**Move down");
             lowerStrafeyBois();
         } else {
@@ -89,13 +89,6 @@ public class Drive extends Subsystem {
      */
     public double getRightDistance() {
         return RobotMap.rightEncoder.getDistance();
-    }
-
-    /*
-     * Return distance recorded by strafe encoder
-     */
-    public double getStrafeDistance() {
-        return RobotMap.strafeEncoder.getDistance();
     }
 
     /*

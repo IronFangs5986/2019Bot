@@ -1,7 +1,6 @@
 package frc.robot.autonomous.paths;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.autonomous.actions.SideStraightDrive;
 import frc.robot.autonomous.actions.StraightDrive;
 import frc.robot.autonomous.actions.TurnDrive;
 
@@ -18,9 +17,5 @@ public class SamplePath extends CommandGroup {
         /* Turns right and then left 90 degrees on a 24in radius */
         addSequential(new TurnDrive(true, 90, 24));
         addSequential(new TurnDrive(false, 90, 24));
-
-        /* Moves right and then left for 4ft 2in */
-        addSequential(new SideStraightDrive(true, 4, 2));
-        addSequential(new SideStraightDrive(false, 4, 2));
     }
 }

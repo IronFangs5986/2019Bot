@@ -15,11 +15,11 @@ public class TurnDrive extends Command {
     double turnDegrees;
     double startDegrees;
     double endDegrees;
-
+    boolean moveForward;
     /*
      * Declares public function that takes direction, degrees, and radius in inches
      */
-    public TurnDrive(boolean right, double degrees, double radius) {
+    public TurnDrive(boolean right, boolean forward, double degrees, double radius) {
 
         /* Require the Drive subsystem */
         requires(Robot.driveTrain);
@@ -32,6 +32,9 @@ public class TurnDrive extends Command {
 
         /* Set turnRadius variable to radius called in function */
         turnRadius = radius;
+
+        /* Set moveForward variable to radius called in function */
+        moveForward = forward;
     }
 
     /*

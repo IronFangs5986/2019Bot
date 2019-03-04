@@ -14,8 +14,8 @@ public class SamplePath extends CommandGroup {
         addSequential(new StraightDrive(true, 4, 2));
         addSequential(new StraightDrive(false, 4, 2));
 
-        /* Turns right and then left 90 degrees on a 24in radius */
-        addSequential(new TurnDrive(true, 90, 24));
-        addSequential(new TurnDrive(false, 90, 24));
+        /* Turns right 90 degrees forward and back on a 24in radius */
+        addSequential(new TurnDrive(true, true, 90, 24));
+        addSequential(new TurnDrive(true, false, 90, 24));
     }
 }

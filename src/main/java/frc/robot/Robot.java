@@ -1,6 +1,8 @@
 package frc.robot;
 
-import frc.robot.autonomous.paths.SamplePath;
+import frc.robot.autonomous.paths.LeftDoubleHatch;
+import frc.robot.autonomous.paths.RightDoubleHatch;
+import frc.robot.autonomous.paths.Straight;
 import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.CargoShooter;
 import frc.robot.subsystems.Drive;
@@ -34,7 +36,7 @@ public class Robot extends TimedRobot {
   private int mode = 0;
 
   /* Initialize and define autonomous modes list */
-  String[] autoList = { "Drive", "Sample" }; // TODO Add autonomous modes when done
+  String[] autoList = { "Manual Drive", "Move Straight", "Left Rocket", "Right Rocket" };
 
   /* Initialize Dashboard */
   Dashboard dashboard = new Dashboard();
@@ -119,8 +121,14 @@ public class Robot extends TimedRobot {
     if (mode == 0) {
       /* Manual driving using camera, leave autonomousCommand as null */
     } else if (mode == 1) {
-      /* SamplePath selected*/
-      autonomousCommand = (Command) new SamplePath();
+      /* Move Straight selected*/
+      autonomousCommand = (Command) new Straight();
+    } else if (mode == 2) {
+      /* Left Rocket selected*/
+      autonomousCommand = (Command) new LeftDoubleHatch();
+    } else if (mode == 3) {
+      /* Right Rocket selected*/
+      autonomousCommand = (Command) new RightDoubleHatch();
     } else {
       /* Manual driving using camera as last resort, leave autonomousCommand as null */
     }

@@ -10,22 +10,22 @@ import frc.robot.autonomous.actions.TurnDrive;
 import frc.robot.commands.ActivateHatchHolder;
 
 /*
- * Autonomous for delivering two hatches in the left rocket
+ * Autonomous for delivering two hatches in the right rocket
  */
-public class LeftDoubleHatch extends CommandGroup {
+public class RightDoubleHatch extends CommandGroup {
 
-    public LeftDoubleHatch() {
+    public RightDoubleHatch() {
         /* Starts autonomous configuration */
         addSequential(new StartAutonomous());
 
         /* Drives forward for ~14ft 0in (Varies to to 2nd level HAB jump) */
         addSequential(new StraightDrive(true, 14, 0));
 
-        /* Strafes to the left until it is centered with reflective tape */
-        addSequential(new SideDriveWithCamera(false));
+        /* Strafes to the right until it is centered with reflective tape */
+        addSequential(new SideDriveWithCamera(true));
 
-        /* Turns 45 degrees forward to the left with a radius of 5in */
-        addSequential(new TurnDrive(false, true, 45, 5));
+        /* Turns 45 degrees forward to the right with a radius of 5in */
+        addSequential(new TurnDrive(true, true, 45, 5));
 
         /* Opens and extends hatch holder to deliver hatch */
         addSequential(new ActivateHatchHolder(true));
@@ -33,11 +33,11 @@ public class LeftDoubleHatch extends CommandGroup {
         /* Drives forward until the robot reaches the rocket */
         addSequential(new StraightDriveReachTape());
 
-        /* Turns 45 degrees backward to the left with a radius of 5in */
-        addSequential(new TurnDrive(false, false, 45, 5));
+        /* Turns 45 degrees backward to the right with a radius of 5in */
+        addSequential(new TurnDrive(true, false, 45, 5));
 
         /* Turns and strafes at the same time until it successfully turns 180 degrees */
-        addSequential(new TurnAndStrafe(false, 180));
+        addSequential(new TurnAndStrafe(true, 180));
 
         /* Drives forward until the robot reaches the loading station */
         addSequential(new StraightDriveReachTape());
@@ -48,8 +48,8 @@ public class LeftDoubleHatch extends CommandGroup {
         /* Drives back 8ft 0in */
         addSequential(new StraightDrive(false, 8, 0));
 
-        /* Turns 135 degrees backward to the right with a radius of 6ft 6in */
-        addSequential(new TurnDrive(true, false, 135, 6.5*12));
+        /* Turns 135 degrees backward to the left with a radius of 6ft 6in */
+        addSequential(new TurnDrive(false, false, 135, 6.5*12));
 
         /* Opens and extends hatch holder to deliver hatch */
         addSequential(new ActivateHatchHolder(true));

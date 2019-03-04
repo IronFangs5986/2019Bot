@@ -72,4 +72,19 @@ public class SideDriveWithCamera extends Command {
             return false;
         }
     }
+
+    /*
+     * Stops drivetrain when command ends
+     */
+    protected void end() {
+        Robot.driveTrain.stopTank();
+        Robot.driveTrain.stopStrafeyBois();
+    }
+
+    /*
+     * Ends the command of autonomous is stopped or interrupted
+     */
+    protected void interrupted() {
+        end();
+    }
 }

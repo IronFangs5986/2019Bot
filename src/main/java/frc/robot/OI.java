@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ActivateCargoIntake;
 import frc.robot.commands.ActivateHatchHolder;
+import frc.robot.commands.MoveCargoIntake;
 import frc.robot.commands.MoveStrafeyBois;
 
 /*
@@ -19,7 +20,8 @@ public class OI {
   public JoystickButton shootCargo;
   public JoystickButton intakeCargo;
   public JoystickButton activateHatchHolder;
-  
+  public JoystickButton raiseCargoIntake;
+  public JoystickButton lowerCargoIntake;
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
 
@@ -31,6 +33,8 @@ public class OI {
     shootCargo = new JoystickButton(driver, 4);
     intakeCargo = new JoystickButton(driver, 2);
     activateHatchHolder = new JoystickButton(driver, 1);
+    raiseCargoIntake = new JoystickButton(driver, 5);
+    lowerCargoIntake = new JoystickButton(driver, 3);
 
     /* Handle button presses */
     shootCargo.whenPressed(new MoveStrafeyBois(false));
@@ -39,5 +43,7 @@ public class OI {
     intakeCargo.whenReleased(new ActivateCargoIntake(false));
     activateHatchHolder.whenPressed(new ActivateHatchHolder(true));
     activateHatchHolder.whenReleased(new ActivateHatchHolder(false));
+    raiseCargoIntake.whenPressed(new MoveCargoIntake(true));
+    lowerCargoIntake.whenPressed(new MoveCargoIntake(false));
   }
 }

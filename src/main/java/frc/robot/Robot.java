@@ -58,8 +58,8 @@ public class Robot extends TimedRobot {
     oi = new OI();
 
     /* Define the tracking camera and start stream 1*/
-    trackingCam = new Tracking();
-    trackingCam.startCameraStream1();
+    //trackingCam = new Tracking();
+    //trackingCam.startCameraStream1();
     
     /* Push autonomous list to Dashboard */
     dashboard.setAutonomousList(autoList);
@@ -84,7 +84,7 @@ public class Robot extends TimedRobot {
     dashboard.setCompressorState(RobotMap.compressor.enabled());
 
     /* Send camera tracking status to Dashboard */
-    dashboard.setCameraTrackingStatus(trackingCam.getValidConn());
+    //dashboard.setCameraTrackingStatus(trackingCam.getValidConn());
   }
 
   /*

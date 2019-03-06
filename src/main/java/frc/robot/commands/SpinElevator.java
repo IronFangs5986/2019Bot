@@ -10,6 +10,7 @@ import frc.robot.Robot;
 public class SpinElevator extends Command {
 
     public SpinElevator() {
+        requires(Robot.elevator);
     }
 
     /*

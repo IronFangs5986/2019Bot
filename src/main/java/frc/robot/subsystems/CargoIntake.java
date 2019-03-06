@@ -27,8 +27,7 @@ public class CargoIntake extends Subsystem {
      * Turns on the intake motor and piston
      */
     public void on() {
-        cargoIntake.set(1);
-        cargoIntakePiston.set(true);
+        cargoIntake.set(.5);
     }
 
     /*
@@ -36,6 +35,19 @@ public class CargoIntake extends Subsystem {
      */
     public void off() {
         cargoIntake.set(0);
+    }
+
+    /*
+     * Lowers the Cargo Intake
+     */
+    public void lower() {
+        cargoIntakePiston.set(true);
+    }
+
+    /*
+     * Raises the Cargo Intake
+     */
+    public void raise() {
         cargoIntakePiston.set(false);
     }
 }

@@ -18,7 +18,7 @@ public class RightDoubleHatch extends CommandGroup {
         /* Starts autonomous configuration */
         addSequential(new StartAutonomous());
 
-        /* Drives forward for ~14ft 0in (Varies to to 2nd level HAB jump) */
+        /* Drives forward for ~14ft 0in (Varies due to 2nd level HAB jump) */
         addSequential(new StraightDrive(true, 14, 0));
 
         /* Strafes to the right until it is centered with reflective tape */

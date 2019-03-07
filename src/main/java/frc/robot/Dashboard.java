@@ -25,6 +25,10 @@ public class Dashboard {
     NetworkTableEntry robotMode = table.getEntry("RobotMode");
     NetworkTableEntry compState = table.getEntry("CompressorState");
     NetworkTableEntry cameraActive = table.getEntry("CameraActive");
+    NetworkTableEntry elevatorHeight = table.getEntry("elevatorHeight");
+    NetworkTableEntry intake = table.getEntry("intake");
+    NetworkTableEntry vision = table.getEntry("vision");
+    NetworkTableEntry time = table.getEntry("time");
 
     /* Send battery voltage to NetworkTables */
     public void setBattery(Double voltage) {
@@ -66,5 +70,27 @@ public class Dashboard {
     /* Send the compressor state to NetworkTables */
     public void setCameraTrackingStatus(Boolean active) {
         cameraActive.setBoolean(active);
+    }
+
+    /* Send the elevator height to NetworkTables */
+    public void setElevatorHeight(String height) {
+        elevatorHeight.setString(height);
+    }
+
+    /* Send the intake position to NetworkTables */
+    public void setIntakePosition(String position) {
+        intake.setString(position);
+    }
+
+    /* Send vision data to NetworkTables */
+    public void setVision(Double data) {
+        vision.setDouble(data);
+    }
+
+    /* Send time to NetworkTables */
+    public void setTime(double seconds) {
+        int minutes = (int) (seconds / 60);
+        int secondsRemaining = (int) (seconds - (minutes * 60));
+        time.setString(minutes+":"+secondsRemaining);
     }
 }

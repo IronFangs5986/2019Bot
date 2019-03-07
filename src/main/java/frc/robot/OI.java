@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ActivateCargoIntake;
 import frc.robot.commands.ActivateHatchHolder;
 import frc.robot.commands.MoveCargoIntake;
+import frc.robot.commands.MoveElevator;
 import frc.robot.commands.MoveStrafeyBois;
 
 /*
@@ -23,6 +24,12 @@ public class OI {
   public JoystickButton raiseCargoIntake;
   public JoystickButton lowerCargoIntake;
   public JoystickButton reverseCargoIntake;
+  public JoystickButton hatchBottom;
+  public JoystickButton hatchMiddle;
+  public JoystickButton hatchTop;
+  public JoystickButton cargoBottom;
+  public JoystickButton cargoMiddle;
+  public JoystickButton cargoTop;
 
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
@@ -38,6 +45,12 @@ public class OI {
     raiseCargoIntake = new JoystickButton(driver, 5);
     lowerCargoIntake = new JoystickButton(driver, 3);
     reverseCargoIntake = new JoystickButton(driver, 6);
+    hatchBottom = new JoystickButton(operator, 0); // unknown
+    hatchMiddle = new JoystickButton(operator, 0); // unknown
+    hatchTop = new JoystickButton(operator, 0); // unknown
+    cargoBottom = new JoystickButton(operator, 0); // unknown
+    cargoMiddle = new JoystickButton(operator, 0); // unknown
+    cargoTop = new JoystickButton(operator, 0); // unknown
 
     /* Handle button presses */
     shootCargo.whenPressed(new MoveStrafeyBois(false));
@@ -50,5 +63,11 @@ public class OI {
     lowerCargoIntake.whenPressed(new MoveCargoIntake(false));
     reverseCargoIntake.whenPressed(new ActivateCargoIntake(true, true));
     reverseCargoIntake.whenReleased(new ActivateCargoIntake(false, true));
+    hatchBottom.whenPressed(new MoveElevator(1));
+    hatchMiddle.whenPressed(new MoveElevator(2));
+    hatchTop.whenPressed(new MoveElevator(3));
+    cargoBottom.whenPressed(new MoveElevator(4));
+    cargoMiddle.whenPressed(new MoveElevator(5));
+    cargoTop.whenPressed(new MoveElevator(6));
   }
 }

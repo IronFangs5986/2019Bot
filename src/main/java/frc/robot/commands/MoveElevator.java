@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Dashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -14,16 +15,20 @@ public class MoveElevator extends Command {
     double startingPosition;
     double targetDistance;
     boolean moveUp;
+
+    /* Initialize Dashboard */
+    Dashboard dashboard = new Dashboard();
+
     /*
      * Require the `position` parameter to know what position to move the elevator
      * 
-     *    1 - Rocket Bottom and Cargo Ship Hatch Panel
-     *    2 - Rocket Middle Hatch Panel
-     *    3 - Rocket Top Hatch Panel
-     *    4 - Rocket Bottom Cargo
-     *    5 - Rocket Middle Cargo
-     *    6 - Rocket Top Cargo
-     *    7 - Cargo Ship Cargo
+     * 1 - Rocket Bottom and Cargo Ship Hatch Panel
+     * 2 - Rocket Middle Hatch Panel
+     * 3 - Rocket Top Hatch Panel
+     * 4 - Rocket Bottom Cargo
+     * 5 - Rocket Middle Cargo
+     * 6 - Rocket Top Cargo
+     * 7 - Cargo Ship Cargo
      * 
      */
     public MoveElevator(int position) {
@@ -33,7 +38,9 @@ public class MoveElevator extends Command {
         /* Set the `target` variable to the value which the command was called with */
         target = position;
 
-        /* Set the current (starting) position of the elevator to determine when to stop */
+        /*
+         * Set the current (starting) position of the elevator to determine when to stop
+         */
         startingPosition = Robot.elevator.getCurrentPosition();
 
         /* Set the position of the target */
@@ -45,6 +52,23 @@ public class MoveElevator extends Command {
         } else {
             moveUp = true;
         }
+
+        /* Send elevator height to Dashbaord */
+        if (target == 1) {
+            dashboard.setElevatorHeight("HATCH BOTTOM");
+        } else if (target == 2) {
+            dashboard.setElevatorHeight("HATCH MIDDLE");
+        } else if (target == 3) {
+            dashboard.setElevatorHeight("HATCH TOP");
+        } else if (target == 4) {
+            dashboard.setElevatorHeight("CARGO BOTTOM");
+        } else if (target == 5) {
+            dashboard.setElevatorHeight("CARGO MIDDLE");
+        } else if (target == 6) {
+            dashboard.setElevatorHeight("CARGO TOP");
+        } else if (target == 7) {
+            dashboard.setElevatorHeight("CARGO SHIP");
+        }
     }
 
     /*
@@ -52,15 +76,18 @@ public class MoveElevator extends Command {
      */
     protected void execute() {
 
-        /* Checks if the elevator should and can move up or down, and executes the right command */
+        /*
+         * Checks if the elevator should and can move up or down, and executes the right
+         * command
+         */
         if (moveUp) {
             if (Robot.elevator.getCurrentPosition() < Robot.elevator.maximum) {
-               Robot.elevator.moveUp(getSpeed(Robot.elevator.getCurrentPosition(), targetDistance)); 
+                Robot.elevator.moveUp(getSpeed(Robot.elevator.getCurrentPosition(), targetDistance));
             }
         } else {
             if (Robot.elevator.getCurrentPosition() > Robot.elevator.minimum) {
-                Robot.elevator.moveDown(); 
-             }
+                Robot.elevator.moveDown();
+            }
         }
     }
 
@@ -88,8 +115,8 @@ public class MoveElevator extends Command {
      * Sets the elevator to hold once the command is finished
      */
     protected void end() {
-		Robot.elevator.hold();
-	}
+        Robot.elevator.hold();
+    }
 
     /*
      * Ends the command of autonomous is stopped or interrupted
@@ -103,19 +130,19 @@ public class MoveElevator extends Command {
      */
     protected double getTargetDistance(int target) {
         if (target == 1) {
-            return (Robot.elevator.bottomHatchLow + Robot.elevator.bottomHatchHigh)/2;
+            return (Robot.elevator.bottomHatchLow + Robot.elevator.bottomHatchHigh) / 2;
         } else if (target == 2) {
-            return (Robot.elevator.middleHatchLow + Robot.elevator.middleHatchHigh)/2;
+            return (Robot.elevator.middleHatchLow + Robot.elevator.middleHatchHigh) / 2;
         } else if (target == 3) {
-            return (Robot.elevator.topHatchLow + Robot.elevator.topHatchHigh)/2;
+            return (Robot.elevator.topHatchLow + Robot.elevator.topHatchHigh) / 2;
         } else if (target == 4) {
-            return (Robot.elevator.bottomCargoLow + Robot.elevator.bottomCargoHigh)/2;
+            return (Robot.elevator.bottomCargoLow + Robot.elevator.bottomCargoHigh) / 2;
         } else if (target == 5) {
-            return (Robot.elevator.middleCargoLow + Robot.elevator.middleCargoHigh)/2;
+            return (Robot.elevator.middleCargoLow + Robot.elevator.middleCargoHigh) / 2;
         } else if (target == 6) {
-            return (Robot.elevator.topCargoLow + Robot.elevator.topCargoHigh)/2;
+            return (Robot.elevator.topCargoLow + Robot.elevator.topCargoHigh) / 2;
         } else if (target == 7) {
-            return (Robot.elevator.shipCargoLow + Robot.elevator.shipCargoHigh)/2;
+            return (Robot.elevator.shipCargoLow + Robot.elevator.shipCargoHigh) / 2;
         } else {
             return 0.0;
         }

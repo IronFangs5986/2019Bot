@@ -8,6 +8,7 @@ import frc.robot.subsystems.CargoShooter;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.HatchHolder;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -57,7 +58,7 @@ public class Robot extends TimedRobot {
     cargoIntake = new CargoIntake();
     oi = new OI();
 
-    /* Define the tracking camera and start stream 1*/
+    /* Define the tracking camera and start stream 1 */
     //trackingCam = new Tracking();
     //trackingCam.startCameraStream1();
     
@@ -85,6 +86,16 @@ public class Robot extends TimedRobot {
 
     /* Send camera tracking status to Dashboard */
     //dashboard.setCameraTrackingStatus(trackingCam.getValidConn());
+
+    /* Send -99999 to Dashboard if there is no target, and target distance if there is one */
+    if (trackingCam.getTv()) {
+      dashboard.setVision(trackingCam.getTx());
+    } else {
+      dashboard.setVision(-99999.0);
+    }
+
+    /* Send remaining time */
+    dashboard.setTime(DriverStation.getInstance().getMatchTime());
   }
 
   /*

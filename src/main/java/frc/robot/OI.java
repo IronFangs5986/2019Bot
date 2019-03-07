@@ -22,6 +22,8 @@ public class OI {
   public JoystickButton activateHatchHolder;
   public JoystickButton raiseCargoIntake;
   public JoystickButton lowerCargoIntake;
+  public JoystickButton reverseCargoIntake;
+
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
 
@@ -35,15 +37,18 @@ public class OI {
     activateHatchHolder = new JoystickButton(driver, 1);
     raiseCargoIntake = new JoystickButton(driver, 5);
     lowerCargoIntake = new JoystickButton(driver, 3);
+    reverseCargoIntake = new JoystickButton(driver, 6);
 
     /* Handle button presses */
     shootCargo.whenPressed(new MoveStrafeyBois(false));
     shootCargo.whenReleased(new MoveStrafeyBois(true));
-    intakeCargo.whenPressed(new ActivateCargoIntake(true));
-    intakeCargo.whenReleased(new ActivateCargoIntake(false));
+    intakeCargo.whenPressed(new ActivateCargoIntake(true, false));
+    intakeCargo.whenReleased(new ActivateCargoIntake(false, false));
     activateHatchHolder.whenPressed(new ActivateHatchHolder(true));
     activateHatchHolder.whenReleased(new ActivateHatchHolder(false));
     raiseCargoIntake.whenPressed(new MoveCargoIntake(true));
     lowerCargoIntake.whenPressed(new MoveCargoIntake(false));
+    reverseCargoIntake.whenPressed(new ActivateCargoIntake(true, true));
+    reverseCargoIntake.whenReleased(new ActivateCargoIntake(false, true));
   }
 }

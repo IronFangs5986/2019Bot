@@ -24,10 +24,17 @@ public class CargoIntake extends Subsystem {
     protected void initDefaultCommand() {}
 
     /*
-     * Turns on the intake motor and piston
+     * Turns on the intake motor
      */
     public void on() {
-        cargoIntake.set(.5);
+        cargoIntake.set(.85);
+    }
+
+    /*
+     * Reverses the intake motor
+     */
+    public void out() {
+        cargoIntake.set(-.85);
     }
 
     /*

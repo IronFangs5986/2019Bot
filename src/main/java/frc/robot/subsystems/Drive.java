@@ -39,20 +39,21 @@ public class Drive extends Subsystem {
         }
         
         /* Sets arcadeDrive values */
-        robotDrive.arcadeDrive(moveAxis, rotateAxis);
-
-        /* Sets strafing motor speed */
-        strafeyBois.set(-strafe);
+        robotDrive.arcadeDrive(-moveAxis, rotateAxis);
 
         /*
          * Automatically drop Strafey Bois when they move
          */
         if (Math.abs(strafe) >= .4) {
-            System.out.println("**Move down");
             lowerStrafeyBois();
+
+            /* Sets strafing motor speed */
+        strafeyBois.set(-strafe);
         } else {
-            System.out.println("**Move up");
             riseStrafeyBois();
+
+            /* Sets strafing motor speed */
+        strafeyBois.set(0);
         }
     }
 

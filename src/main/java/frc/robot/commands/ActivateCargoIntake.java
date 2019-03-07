@@ -8,14 +8,16 @@ import frc.robot.Robot;
  */
 public class ActivateCargoIntake extends Command {
 
-    /* Boolean that holds wether to turn on or off the intake */
+    /* Boolean that holds wether to turn on or off the intake, and direction */
     boolean turnOn;
+    boolean turnReverse;
 
     /*
      * Require the `on` parameter to know wether to turn on or off the intake, and requires the CargoIntake subsystem
      */
-    public ActivateCargoIntake(boolean on) {
+    public ActivateCargoIntake(boolean on, boolean reverse) {
         turnOn = on;
+        turnReverse = reverse;
 		requires(Robot.cargoIntake);
     }
 
@@ -26,7 +28,11 @@ public class ActivateCargoIntake extends Command {
 
         /* Checks if the intake should turn on or off, and executes the right command */
         if (turnOn) {
+            if (turnReverse) {
+                Robot.cargoIntake.out();
+            } else {
                 Robot.cargoIntake.on();
+            }
         } else {
                 Robot.cargoIntake.off();
         }

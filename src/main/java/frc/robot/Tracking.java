@@ -305,6 +305,7 @@ public class Tracking {
         String retval = null;
 
         if (visionPort != null) {
+            System.out.println("Has a port");
             if (visionPort.getBytesReceived() > 0) {
                 String rxString = visionPort.readString();
                 System.out.println("Waited: " + loopCount + " loops, Rcv'd: " + rxString);
@@ -468,7 +469,7 @@ public class Tracking {
      */
     public void parsePacket(String packet) {
         JSONParser parser = new JSONParser();
-        System.out.println("Testing Parser: " + packet);
+        //System.out.println("Testing Parser: " + packet);
 
         try {
             Object obj = parser.parse(packet);
@@ -477,7 +478,7 @@ public class Tracking {
             ty = (double) jsonObject.get("ty");
             ta = (double) jsonObject.get("ta");
             tv = (boolean) jsonObject.get("tv");
-            conn = (boolean) jsonObject.get("conn");
+            //conn = (boolean) jsonObject.get("conn");
         } catch (Exception e) {
             System.out.println(
                     "Parse Exception, probably need to check you JeVois output that it's matching what you are parsing");

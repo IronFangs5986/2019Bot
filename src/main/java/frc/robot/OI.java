@@ -45,12 +45,12 @@ public class OI {
     raiseCargoIntake = new JoystickButton(driver, 5);
     lowerCargoIntake = new JoystickButton(driver, 3);
     reverseCargoIntake = new JoystickButton(driver, 6);
-    hatchBottom = new JoystickButton(operator, 0); // unknown
-    hatchMiddle = new JoystickButton(operator, 0); // unknown
-    hatchTop = new JoystickButton(operator, 0); // unknown
-    cargoBottom = new JoystickButton(operator, 0); // unknown
-    cargoMiddle = new JoystickButton(operator, 0); // unknown
-    cargoTop = new JoystickButton(operator, 0); // unknown
+    hatchBottom = new JoystickButton(operator, 11);
+    hatchMiddle = new JoystickButton(operator, 9);
+    hatchTop = new JoystickButton(operator, 7);
+    cargoBottom = new JoystickButton(operator, 12);
+    cargoMiddle = new JoystickButton(operator, 10);
+    cargoTop = new JoystickButton(operator, 8);
 
     /* Handle button presses */
     shootCargo.whenPressed(new MoveStrafeyBois(false));

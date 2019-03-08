@@ -89,8 +89,12 @@ public class Dashboard {
 
     /* Send time to NetworkTables */
     public void setTime(double seconds) {
+        if (seconds == -1.0) {
+            time.setString("2:15");
+        } else {
         int minutes = (int) (seconds / 60);
         int secondsRemaining = (int) (seconds - (minutes * 60));
         time.setString(minutes+":"+secondsRemaining);
+        }
     }
 }

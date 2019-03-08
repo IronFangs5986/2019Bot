@@ -59,8 +59,8 @@ public class Robot extends TimedRobot {
     oi = new OI();
 
     /* Define the tracking camera and start stream 1 */
-    //trackingCam = new Tracking();
-    //trackingCam.startCameraStream1();
+    trackingCam = new Tracking();
+    trackingCam.startCameraStream1();
     
     /* Push autonomous list to Dashboard */
     dashboard.setAutonomousList(autoList);
@@ -92,10 +92,12 @@ public class Robot extends TimedRobot {
       dashboard.setVision(trackingCam.getTx());
     } else {
       dashboard.setVision(-99999.0);
+      //dashboard.setVision(trackingCam.getTx());
     }
 
     /* Send remaining time */
     dashboard.setTime(DriverStation.getInstance().getMatchTime());
+    System.out.println(DriverStation.getInstance().getMatchTime());
   }
 
   /*

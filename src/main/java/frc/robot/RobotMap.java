@@ -2,6 +2,10 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.cscore.MjpegServer;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode.PixelFormat;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -54,12 +58,17 @@ public class RobotMap {
   public static Encoder rightEncoder;
   public static Encoder leftEncoder;
   public static Encoder liftEncoder;
+  public static Encoder turnEncoder;
 
   /* Initialize gyroscope */
   public static ADIS16448_IMU gyro;
 
   /* Initialize hall effect sensors */
   public static DigitalInput liftResetSensor;
+
+  /* Initialize camera and camera server variables */
+  public static UsbCamera driverCamera = null;
+  public static MjpegServer driverCameraServer = null;
 
   /* Initialize robot information */
   public static Double robotWidth;
@@ -125,18 +134,34 @@ public class RobotMap {
     liftEncoder = new Encoder(4, 5, true, Encoder.EncodingType.k4X);
     liftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
     liftEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
-    liftEncoder.setReverseDirection(false);
+    liftEncoder.setReverseDirection(true);
     liftEncoder.reset();
+
+    /* Set up elevator turn encoder */
+    turnEncoder = new Encoder(6, 7, true, Encoder.EncodingType.k4X);
+    turnEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+    turnEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
+    turnEncoder.setReverseDirection(false);
+    turnEncoder.reset();
 
     /* Define gyroscope class */
     gyro = new ADIS16448_IMU();
 
     /* Define hall effect sensors */
-    /*liftResetSensor = new DigitalInput(8);*/
+    liftResetSensor = new DigitalInput(8);
+
+    /* Define and start camera server */
+    driverCamera = new UsbCamera("180Camera", 1);
+    driverCamera.setVideoMode(PixelFormat.kMJPEG, 160, 120, 30);
+    driverCameraServer = new MjpegServer("180Server", 1182);
+    driverCameraServer.setSource(driverCamera);
+    /*UsbCamera server = CameraServer.getInstance().startAutomaticCapture(0);
+    server.setResolution(160, 120);
+    server.setFPS(30);*/
 
     /* Define robot information */
-    robotWidth = 24.0; // Unknown. Put 24in temporarily for testing purposes
-    robotLength = 0.0; // Unknown
+    robotWidth = 21.75;
+    robotLength = 38.0;
     robotHeight = 0.0; // Unknown
     minDriveSpeed = 0.3; // Unknown. Put 0.3 temporarily for testing purposes
   }

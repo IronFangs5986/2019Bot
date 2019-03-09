@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.ElevatorHandler;
 import frc.robot.commands.SpinElevator;
 
 /*
@@ -18,7 +19,7 @@ public class Elevator extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new SpinElevator());
+        setDefaultCommand(new ElevatorHandler());
     }
 
     /*
@@ -43,10 +44,17 @@ public class Elevator extends Subsystem {
     }
 
     /*
-     * Determines the current elevator distance based on an encoder.
+     * Determines the current elevator lift distance based on an encoder.
      */
     public double getCurrentPosition() {
         return RobotMap.liftEncoder.getDistance();
+    }
+
+    /*
+     * Determines the current elevator spin distance based on an encoder.
+     */
+    public double getSpinPosition() {
+        return RobotMap.turnEncoder.getDistance();
     }
 
     /*
@@ -66,12 +74,12 @@ public class Elevator extends Subsystem {
     /*
      * Set public values of elevator distances of minimum and maximum for each target
      */
-    public double bottomHatchLow = 0.0; // Unknown
-    public double bottomHatchHigh = 0.0; // Unknown
-    public double middleHatchLow = 0.0; // Unknown
-    public double middleHatchHigh = 0.0; // Unknown
-    public double topHatchLow = 0.0; // Unknown
-    public double topHatchHigh = 0.0; // Unknown
+    public double bottomHatchLow = 1.5; // Unknown
+    public double bottomHatchHigh = 2.5; // Unknown
+    public double middleHatchLow = 10.5; // Unknown
+    public double middleHatchHigh = 11.5; // Unknown
+    public double topHatchLow = 15 ; // Unknown
+    public double topHatchHigh = 16; // Unknown
 
     public double bottomCargoLow = 0.0; // Unknown
     public double bottomCargoHigh = 0.0; // Unknown
@@ -85,4 +93,9 @@ public class Elevator extends Subsystem {
 
     public double minimum = 0.0; // Unknown
     public double maximum = 0.0; // Unknown
+
+    public double elevatorFront = 0.0; // Unknown
+    public double elevatorRight = 0.0; // Unknown
+    public double elevatorBack = 0.0; // Unknown
+    public double elevatorLeft = 0.0; // Unknown
 }

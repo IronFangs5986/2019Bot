@@ -44,17 +44,17 @@ public class Drive extends Subsystem {
         /*
          * Automatically drop Strafey Bois when they move
          */
-        if (Math.abs(strafe) >= .4) {
-            lowerStrafeyBois();
+        //if (Math.abs(strafe) >= .4) {
+            //lowerStrafeyBois();
 
             /* Sets strafing motor speed */
-        strafeyBois.set(-strafe);
-        } else {
-            riseStrafeyBois();
+        //strafeyBois.set(-strafe);
+        //} else {
+          //  riseStrafeyBois();
 
             /* Sets strafing motor speed */
-        strafeyBois.set(0);
-        }
+        //strafeyBois.set(0);
+        //}
     }
 
     /*

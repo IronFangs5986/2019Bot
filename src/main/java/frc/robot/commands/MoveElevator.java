@@ -10,7 +10,7 @@ import frc.robot.RobotMap;
  */
 public class MoveElevator extends Command {
 
-    /* Boolean that holds wether the elevator moves up or down */
+    /* Variables set when calling the command */
     int target;
     double startingPosition;
     double targetDistance;
@@ -82,7 +82,8 @@ public class MoveElevator extends Command {
          */
         if (moveUp) {
             if (Robot.elevator.getCurrentPosition() < Robot.elevator.maximum) {
-                Robot.elevator.moveUp(getSpeed(Robot.elevator.getCurrentPosition(), targetDistance));
+                //Robot.elevator.moveUp(getSpeed(Robot.elevator.getCurrentPosition(), targetDistance));
+            Robot.elevator.moveUp(.4);
             }
         } else {
             if (Robot.elevator.getCurrentPosition() > Robot.elevator.minimum) {

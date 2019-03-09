@@ -92,12 +92,14 @@ public class Robot extends TimedRobot {
       dashboard.setVision(trackingCam.getTx());
     } else {
       dashboard.setVision(-99999.0);
-      //dashboard.setVision(trackingCam.getTx());
     }
 
     /* Send remaining time */
     dashboard.setTime(DriverStation.getInstance().getMatchTime());
-    System.out.println(DriverStation.getInstance().getMatchTime());
+
+    /* Print to console for debugging*/
+    System.out.println("Elevator Height: "+Robot.elevator.getCurrentPosition());
+    System.out.println("Elevator Spin: "+Robot.elevator.getSpinPosition());
   }
 
   /*
@@ -160,7 +162,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
 
     /* Emergency autonomous shutdown */
-    if (OI.driver.getRawButton(0)) { //Unknown button id
+    if (OI.driver.getRawButton(8)) {
       if (autonomousCommand != null) {
         autonomousCommand.cancel();
       }

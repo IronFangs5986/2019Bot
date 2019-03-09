@@ -10,26 +10,25 @@ import frc.robot.RobotMap;
  */
 public class ElevatorHandler extends Command {
 
-    /* Set stop reset to false */
-    Boolean stopReset = false;
-
     public ElevatorHandler() {
+        requires(Robot.elevator);
     }
 
     /*
      * Executes the command
      */
     protected void execute() {
-        /* Enables the ability to be reset once it leaves the bottom  zone */
-        if (Robot.elevator.getCurrentPosition() > Robot.elevator.minimum && stopReset) {
-            stopReset = false;
-        }
 
         /* Resets elevator lift encoder */
-        if (RobotMap.liftResetSensor.get() && stopReset == false) {
+        if (!RobotMap.liftResetSensor.get()) {
             Robot.elevator.reset();
-            stopReset = true;
         }
+
+
+        if (OI.operator.getRawButton(1)) {
+            Robot.elevator.spin(OI.operator.getRawAxis(2));
+        }
+
     }
 
     /*

@@ -94,17 +94,17 @@ public class Tracking {
             try {
                 System.out.print("Creating JeVois SerialPort...");
                 visionPort = new SerialPort(BAUD_RATE, SerialPort.Port.kUSB);
-                System.out.println("SUCCESS USB");
+                System.out.println("SUCCESS USB 0");
             } catch (Exception e) {
                 try {
                     System.out.print("Creating JeVois SerialPort...");
                     visionPort = new SerialPort(BAUD_RATE, SerialPort.Port.kUSB1);
-                    System.out.println("SUCCESS UDB1");
+                    System.out.println("SUCCESS USB 1");
                 } catch (Exception f) {
                     try {
                         System.out.print("Creating JeVois SerialPort...");
                         visionPort = new SerialPort(BAUD_RATE, SerialPort.Port.kUSB2);
-                        System.out.println("SUCCESS USB2");
+                        System.out.println("SUCCESS USB 2");
                     } catch (Exception g) {
                         System.out.println("FAILED!!");
                         System.out.println("Failed to connect to JeVois on any port!");

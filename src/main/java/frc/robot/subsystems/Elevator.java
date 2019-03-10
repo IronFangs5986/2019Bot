@@ -26,7 +26,7 @@ public class Elevator extends Subsystem {
      * Sets the elevator to move up
      */
     public void moveUp(double speed) {
-        elevator.set(speed);
+        elevator.set(-speed);
     }
 
     /*
@@ -40,7 +40,7 @@ public class Elevator extends Subsystem {
      * Sets the elevator to hold its current position
      */
     public void hold() {
-        elevator.set(.2);
+        elevator.set(-.3);
     }
 
     /*
@@ -61,7 +61,15 @@ public class Elevator extends Subsystem {
      * Sets the motor spin
      */
     public void spin(Double speed) {
-        RobotMap.elevatorSpin.set(speed);
+        if (Math.abs(speed) >= .35) {
+            if (speed > 0) {
+                RobotMap.elevatorSpin.set(.35);
+            } else {
+                RobotMap.elevatorSpin.set(-.35);
+            }
+        } else {
+            RobotMap.elevatorSpin.set(speed);
+        }
     }
 
     /*
@@ -92,7 +100,7 @@ public class Elevator extends Subsystem {
     public double shipCargoHigh = 0.0; // Unknown
 
     public double minimum = 0.0; // Unknown
-    public double maximum = 0.0; // Unknown
+    public double maximum = 16.5; // Unknown
 
     public double elevatorFront = 0.0; // Unknown
     public double elevatorRight = 0.0; // Unknown

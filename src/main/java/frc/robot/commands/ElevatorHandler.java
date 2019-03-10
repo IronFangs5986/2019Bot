@@ -26,8 +26,23 @@ public class ElevatorHandler extends Command {
 
 
         if (OI.operator.getRawButton(1)) {
-            Robot.elevator.spin(OI.operator.getRawAxis(2));
+            //Robot.elevator.spin(OI.operator.getRawAxis(2));
+          //  Robot.elevator.hold();
+          //Robot.elevator.moveUp(.3);
+        } else {
+          //  Robot.elevator.moveUp(OI.operator.getRawAxis(1));
+          Robot.elevator.moveUp(0.0);
         }
+
+        //if (OI.operator.getRawButton(3)) {
+            //if (Robot.elevator.getSpinPosition() <= 2.323 && Robot.elevator.getSpinPosition() >= 0.0) {
+                Robot.elevator.spin(OI.operator.getRawAxis(2));
+            //} else {
+             //   Robot.elevator.spin(0.0); 
+            //}
+       // } else {
+         //   Robot.elevator.spin(0.0);
+        //}
 
     }
 

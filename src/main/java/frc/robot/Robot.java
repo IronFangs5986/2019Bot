@@ -59,8 +59,8 @@ public class Robot extends TimedRobot {
     oi = new OI();
 
     /* Define the tracking camera and start stream 1 */
-    trackingCam = new Tracking();
-    trackingCam.startCameraStream1();
+    //trackingCam = new Tracking();
+    //trackingCam.startCameraStream1();
     
     /* Push autonomous list to Dashboard */
     dashboard.setAutonomousList(autoList);
@@ -88,17 +88,17 @@ public class Robot extends TimedRobot {
     //dashboard.setCameraTrackingStatus(trackingCam.getValidConn());
 
     /* Send -99999 to Dashboard if there is no target, and target distance if there is one */
-    if (trackingCam.getTv()) {
-      dashboard.setVision(trackingCam.getTx());
-    } else {
-      dashboard.setVision(-99999.0);
-    }
+   // if (trackingCam.getTv()) {
+     // dashboard.setVision(trackingCam.getTx());
+    //} else {
+      //dashboard.setVision(-99999.0);
+    //}
 
     /* Send remaining time */
     dashboard.setTime(DriverStation.getInstance().getMatchTime());
 
     /* Print to console for debugging*/
-    System.out.println("Elevator Height: "+Robot.elevator.getCurrentPosition());
+    //System.out.println("Elevator Height: "+Robot.elevator.getCurrentPosition());
     System.out.println("Elevator Spin: "+Robot.elevator.getSpinPosition());
   }
 
@@ -133,20 +133,20 @@ public class Robot extends TimedRobot {
     mode = dashboard.getSelectedAutonomous();
 
     /* Set autonomousCommand to the right command according to the mode variable */
-    if (mode == 0) {
+   // if (mode == 0) {
       /* Manual driving using camera, leave autonomousCommand as null */
-    } else if (mode == 1) {
+   // } else if (mode == 1) {
       /* Move Straight selected*/
-      autonomousCommand = (Command) new Straight();
-    } else if (mode == 2) {
+     // autonomousCommand = (Command) new Straight();
+    //} else if (mode == 2) {
       /* Left Rocket selected*/
-      autonomousCommand = (Command) new LeftDoubleHatch();
-    } else if (mode == 3) {
+     // autonomousCommand = (Command) new LeftDoubleHatch();
+    //} else if (mode == 3) {
       /* Right Rocket selected*/
-      autonomousCommand = (Command) new RightDoubleHatch();
-    } else {
+     // autonomousCommand = (Command) new RightDoubleHatch();
+    //} else {
       /* Manual driving using camera as last resort, leave autonomousCommand as null */
-    }
+    //}
 
     /* Start the autonomous command if it has not been started already */
     if (autonomousCommand != null) {

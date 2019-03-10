@@ -29,6 +29,7 @@ public class OI {
   public JoystickButton raiseCargoIntake;
   public JoystickButton lowerCargoIntake;
   public JoystickButton reverseCargoIntake;
+  public JoystickButton reverseCargoIntake2;
   public JoystickButton hatchBottom;
   public JoystickButton hatchMiddle;
   public JoystickButton hatchTop;
@@ -55,6 +56,7 @@ public class OI {
     raiseCargoIntake = new JoystickButton(driver, 5);
     lowerCargoIntake = new JoystickButton(driver, 3);
     reverseCargoIntake = new JoystickButton(driver, 9);
+    reverseCargoIntake2 = new JoystickButton(driver, 2);
     hatchBottom = new JoystickButton(operator, 11);
     hatchMiddle = new JoystickButton(operator, 9);
     hatchTop = new JoystickButton(operator, 7);
@@ -69,25 +71,27 @@ public class OI {
     /* Handle button presses */
     intakeCargo.whenPressed(new ActivateCargoIntake(true, false));
     intakeCargo.whenReleased(new ActivateCargoIntake(false, false));
-    openHatchHolder.whenPressed(new MoveHatchHolder(true));
-    openHatchHolder.whenReleased(new MoveHatchHolder(false));
+    openHatchHolder.whenPressed(new MoveHatchHolder(false));
+    openHatchHolder.whenReleased(new MoveHatchHolder(true));
     slideHatchHolder.whenPressed(new SlideHatchHolder(true));
     slideHatchHolder.whenReleased(new SlideHatchHolder(false));
-    moveStrafeyBois.whenPressed(new MoveStrafeyBois(false));
-    moveStrafeyBois.whenReleased(new MoveStrafeyBois(true));
+    //moveStrafeyBois.whenPressed(new MoveStrafeyBois(false));
+    //moveStrafeyBois.whenReleased(new MoveStrafeyBois(true));
     raiseCargoIntake.whenPressed(new MoveCargoIntake(true));
     lowerCargoIntake.whenPressed(new MoveCargoIntake(false));
     reverseCargoIntake.whenPressed(new ActivateCargoIntake(true, true));
     reverseCargoIntake.whenReleased(new ActivateCargoIntake(false, true));
+    reverseCargoIntake2.whenPressed(new ActivateCargoIntake(true, false));
+    reverseCargoIntake2.whenReleased(new ActivateCargoIntake(false, false));
     hatchBottom.whenPressed(new MoveElevator(1));
     hatchMiddle.whenPressed(new MoveElevator(2));
     hatchTop.whenPressed(new MoveElevator(3));
     cargoBottom.whenPressed(new MoveElevator(4));
     cargoMiddle.whenPressed(new MoveElevator(5));
     cargoTop.whenPressed(new MoveElevator(6));
-    forwardElevator.whenPressed(new SpinElevator(1));
-    rightElevator.whenPressed(new SpinElevator(2));
-    backElevator.whenPressed(new SpinElevator(3));
-    leftElevator.whenPressed(new SpinElevator(4));
+    //forwardElevator.whenPressed(new SpinElevator(1));
+    //rightElevator.whenPressed(new SpinElevator(2));
+    //backElevator.whenPressed(new SpinElevator(3));
+    //leftElevator.whenPressed(new SpinElevator(4));
   }
 }

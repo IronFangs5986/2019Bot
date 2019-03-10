@@ -28,9 +28,9 @@ public class MoveStrafeyBois extends Command {
          * Checks if the Strafey Bois should move up or down, and executes the right command
          */
         if (moveUp) {
-            Robot.driveTrain.riseStrafeyBois();
+            //Robot.driveTrain.riseStrafeyBois();
         } else {
-            Robot.driveTrain.lowerStrafeyBois();
+            //Robot.driveTrain.lowerStrafeyBois();
         }
     }
     

@@ -46,6 +46,9 @@ public class MoveElevator extends Command {
         /* Set the position of the target */
         targetDistance = getTargetDistance(position);
 
+
+        System.out.println("Start: "+startingPosition);
+        System.out.println("Target: "+ targetDistance);
         /* Determines wether to move up or down */
         if (startingPosition > targetDistance) {
             moveUp = false;
@@ -83,7 +86,7 @@ public class MoveElevator extends Command {
         if (moveUp) {
             if (Robot.elevator.getCurrentPosition() < Robot.elevator.maximum) {
                 //Robot.elevator.moveUp(getSpeed(Robot.elevator.getCurrentPosition(), targetDistance));
-            Robot.elevator.moveUp(.4);
+            //Robot.elevator.moveUp(.9);
             }
         } else {
             if (Robot.elevator.getCurrentPosition() > Robot.elevator.minimum) {
@@ -99,14 +102,16 @@ public class MoveElevator extends Command {
     protected boolean isFinished() {
         if (moveUp) {
             if (Robot.elevator.getCurrentPosition() >= targetDistance) {
+                System.out.println("end");
                 return true;
             } else {
                 return false;
             }
         } else {
             if (Robot.elevator.getCurrentPosition() <= targetDistance) {
+                System.out.println("end");
                 return true;
-            } else {
+                        } else {
                 return false;
             }
         }
@@ -157,8 +162,8 @@ public class MoveElevator extends Command {
         double speed = (-1 / ((-1 - ((total - 1) / 2)) * (-1 - ((total - 1) / 2))));
         speed = speed * (current - ((total - 1) / 2)) * (current - ((total - 1) / 2));
         speed = speed + 1;
-        if (speed < RobotMap.minDriveSpeed) {
-            speed = RobotMap.minDriveSpeed;
+        if (speed < .9) {
+            speed = .9;
         }
         return speed;
     }

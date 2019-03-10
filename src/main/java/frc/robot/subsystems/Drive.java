@@ -38,12 +38,21 @@ public class Drive extends Subsystem {
             rotateAxis = 0;
         }
         
+        if (Math.abs(rotateAxis) >= .95) {
+            if (rotateAxis > 0) {
+                rotateAxis = .95;
+            } else {
+                rotateAxis = -.95;
+            }
+        }
+
         /* Sets arcadeDrive values */
         robotDrive.arcadeDrive(-moveAxis, rotateAxis);
 
         /*
          * Automatically drop Strafey Bois when they move
          */
+        //strafeyBois.set(-strafe);
         //if (Math.abs(strafe) >= .4) {
             //lowerStrafeyBois();
 
@@ -64,7 +73,7 @@ public class Drive extends Subsystem {
         /* Sets curvatureDrive values */
         robotDrive.curvatureDrive(moveAxis, rotateAxis, turn);
         /* Sets strafing motor speed */
-        strafeyBois.set(strafe);
+       // strafeyBois.set(strafe);
     }
 
     /*
@@ -109,14 +118,14 @@ public class Drive extends Subsystem {
      * Stops strafe drivetrain by setting speeds to 0
      */
     public void stopStrafeyBois() {
-        strafeyBois.set(0);
+        //strafeyBois.set(0);
     }
 
     /*
      * Rise Strafey Bois mechanism
      */
     public void riseStrafeyBois() {
-        RobotMap.strafePiston.set(false);
+        //RobotMap.strafePiston.set(false);
         //RobotMap.hatchHolderPiston.set(false);
     }
 
@@ -124,7 +133,7 @@ public class Drive extends Subsystem {
      * Lower Strafey Bois mechanism
      */
     public void lowerStrafeyBois() {
-        RobotMap.strafePiston.set(true);
+        //RobotMap.strafePiston.set(true);
         //RobotMap.hatchHolderPiston.set(true);
     }
 

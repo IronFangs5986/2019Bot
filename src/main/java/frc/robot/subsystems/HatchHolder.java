@@ -20,14 +20,14 @@ public class HatchHolder extends Subsystem {
      * Opens the hatch holder piston
      */
     public void open() {
-        RobotMap.hatchHolderPiston.set(true);
+        RobotMap.hatchHolderPiston.set(false);
     }
 
     /*
      * Closes the hatch holder piston
      */
     public void close() {
-        RobotMap.hatchHolderPiston.set(false);
+        RobotMap.hatchHolderPiston.set(true);
     }
 
     /*

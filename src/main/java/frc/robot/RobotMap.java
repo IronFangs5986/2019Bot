@@ -111,9 +111,9 @@ public class RobotMap {
 
     /* Define solenoids */
     strafePiston = new Solenoid(0);
-    hatchHolderPiston = new Solenoid(1);
-    hatchSliderPiston = new Solenoid(2);
-    cargoShooterPiston = new Solenoid(3);
+    hatchHolderPiston = new Solenoid(3);
+    hatchSliderPiston = new Solenoid(1);
+    //cargoShooterPiston = new Solenoid(3);
     cargoIntakePiston = new Solenoid(4);
 
     /* Set up right encoder */
@@ -151,13 +151,13 @@ public class RobotMap {
     liftResetSensor = new DigitalInput(8);
 
     /* Define and start camera server */
-    driverCamera = new UsbCamera("180Camera", 1);
-    driverCamera.setVideoMode(PixelFormat.kMJPEG, 160, 120, 30);
-    driverCameraServer = new MjpegServer("180Server", 1182);
-    driverCameraServer.setSource(driverCamera);
-    /*UsbCamera server = CameraServer.getInstance().startAutomaticCapture(0);
+    //driverCamera = new UsbCamera("180Camera", 1);
+    //driverCamera.setVideoMode(PixelFormat.kMJPEG, 160, 120, 30);
+    //driverCameraServer = new MjpegServer("180Server", 1182);
+    //driverCameraServer.setSource(driverCamera);
+    UsbCamera server = CameraServer.getInstance().startAutomaticCapture(0);
     server.setResolution(160, 120);
-    server.setFPS(30);*/
+    server.setFPS(30);
 
     /* Define robot information */
     robotWidth = 21.75;

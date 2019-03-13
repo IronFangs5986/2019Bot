@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.commands.ActivateCargoIntake;
 import frc.robot.commands.ActivateHatchHolder;
 import frc.robot.commands.MoveCargoIntake;
+import frc.robot.commands.MoveCargoShooter;
 import frc.robot.commands.MoveElevator;
 import frc.robot.commands.MoveHatchHolder;
 import frc.robot.commands.MoveStrafeyBois;
@@ -24,7 +25,8 @@ public class OI {
   /* Define buttons */
   public JoystickButton intakeCargo;
   public JoystickButton openHatchHolder;
-  public JoystickButton slideHatchHolder;
+  public JoystickButton pushHatchHolder;
+  public JoystickButton pullHatchHolder;
   public JoystickButton moveStrafeyBois;
   public JoystickButton raiseCargoIntake;
   public JoystickButton lowerCargoIntake;
@@ -40,6 +42,7 @@ public class OI {
   public POVButton rightElevator;
   public POVButton backElevator;
   public POVButton leftElevator;
+  public JoystickButton shootCargo;
 
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
@@ -49,12 +52,14 @@ public class OI {
     operator = new Joystick(2);
 
     /* Assign button id to buttons */
-    intakeCargo = new JoystickButton(driver, 10);
-    openHatchHolder = new JoystickButton(driver, 11);
-    slideHatchHolder = new JoystickButton(driver, 12);
-    moveStrafeyBois = new JoystickButton(driver, 1);
-    raiseCargoIntake = new JoystickButton(driver, 5);
-    lowerCargoIntake = new JoystickButton(driver, 3);
+    //intakeCargo = new JoystickButton(driver, 10);
+    openHatchHolder = new JoystickButton(driver, 1);
+    pushHatchHolder = new JoystickButton(driver, 5);
+    pullHatchHolder = new JoystickButton(driver, 3);
+    shootCargo = new JoystickButton(driver, 12);
+    //moveStrafeyBois = new JoystickButton(driver, 1);
+    //raiseCargoIntake = new JoystickButton(driver, 5);
+    //lowerCargoIntake = new JoystickButton(driver, 3);
     reverseCargoIntake = new JoystickButton(driver, 9);
     reverseCargoIntake2 = new JoystickButton(driver, 2);
     hatchBottom = new JoystickButton(operator, 11);
@@ -69,16 +74,18 @@ public class OI {
     leftElevator = new POVButton(operator, 270);
 
     /* Handle button presses */
-    intakeCargo.whenPressed(new ActivateCargoIntake(true, false));
-    intakeCargo.whenReleased(new ActivateCargoIntake(false, false));
+    //intakeCargo.whenPressed(new ActivateCargoIntake(true, false));
+    //intakeCargo.whenReleased(new ActivateCargoIntake(false, false));
     openHatchHolder.whenPressed(new MoveHatchHolder(false));
     openHatchHolder.whenReleased(new MoveHatchHolder(true));
-    slideHatchHolder.whenPressed(new SlideHatchHolder(true));
-    slideHatchHolder.whenReleased(new SlideHatchHolder(false));
+    pushHatchHolder.whenPressed(new SlideHatchHolder(true));
+    pullHatchHolder.whenReleased(new SlideHatchHolder(false));
+    shootCargo.whenPressed(new MoveCargoShooter(false));
+    shootCargo.whenReleased(new MoveCargoShooter(true));
     //moveStrafeyBois.whenPressed(new MoveStrafeyBois(false));
     //moveStrafeyBois.whenReleased(new MoveStrafeyBois(true));
-    raiseCargoIntake.whenPressed(new MoveCargoIntake(true));
-    lowerCargoIntake.whenPressed(new MoveCargoIntake(false));
+    //raiseCargoIntake.whenPressed(new MoveCargoIntake(true));
+    //lowerCargoIntake.whenPressed(new MoveCargoIntake(false));
     reverseCargoIntake.whenPressed(new ActivateCargoIntake(true, true));
     reverseCargoIntake.whenReleased(new ActivateCargoIntake(false, true));
     reverseCargoIntake2.whenPressed(new ActivateCargoIntake(true, false));

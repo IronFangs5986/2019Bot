@@ -99,7 +99,7 @@ public class Robot extends TimedRobot {
 
     /* Print to console for debugging*/
     //System.out.println("Elevator Height: "+Robot.elevator.getCurrentPosition());
-    System.out.println("Elevator Spin: "+Robot.elevator.getSpinPosition());
+    //System.out.println("Elevator Spin: "+Robot.elevator.getSpinPosition());
   }
 
   /*

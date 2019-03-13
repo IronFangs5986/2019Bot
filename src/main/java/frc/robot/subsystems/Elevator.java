@@ -61,15 +61,23 @@ public class Elevator extends Subsystem {
      * Sets the motor spin
      */
     public void spin(Double speed) {
+        if (Math.abs(speed) >= .1) {
         if (Math.abs(speed) >= .35) {
             if (speed > 0) {
                 RobotMap.elevatorSpin.set(.35);
+                System.out.println("Elevator Spin: .35");
             } else {
                 RobotMap.elevatorSpin.set(-.35);
+                System.out.println("Elevator Spin: -.35");
             }
         } else {
             RobotMap.elevatorSpin.set(speed);
+            System.out.println("Elevator Spin: "+speed);
         }
+    } else {
+        RobotMap.elevatorSpin.set(0.0);
+        System.out.println("Elevator Spin: 0.0");
+    }
     }
 
     /*

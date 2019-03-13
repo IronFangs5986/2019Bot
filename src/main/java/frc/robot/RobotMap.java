@@ -110,11 +110,11 @@ public class RobotMap {
     compressor = new Compressor(0);
 
     /* Define solenoids */
-    strafePiston = new Solenoid(0);
-    hatchHolderPiston = new Solenoid(3);
+    strafePiston = new Solenoid(2);
+    hatchHolderPiston = new Solenoid(0);
     hatchSliderPiston = new Solenoid(1);
-    //cargoShooterPiston = new Solenoid(3);
-    cargoIntakePiston = new Solenoid(4);
+    cargoShooterPiston = new Solenoid(3);
+    //cargoIntakePiston = new Solenoid(4);
 
     /* Set up right encoder */
     rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);

@@ -51,36 +51,6 @@ public class Elevator extends Subsystem {
     }
 
     /*
-     * Determines the current elevator spin distance based on an encoder.
-     */
-    public double getSpinPosition() {
-        return RobotMap.turnEncoder.getDistance();
-    }
-
-    /*
-     * Sets the motor spin
-     */
-    public void spin(Double speed) {
-        if (Math.abs(speed) >= .1) {
-        if (Math.abs(speed) >= .35) {
-            if (speed > 0) {
-                RobotMap.elevatorSpin.set(.35);
-                System.out.println("Elevator Spin: .35");
-            } else {
-                RobotMap.elevatorSpin.set(-.35);
-                System.out.println("Elevator Spin: -.35");
-            }
-        } else {
-            RobotMap.elevatorSpin.set(speed);
-            System.out.println("Elevator Spin: "+speed);
-        }
-    } else {
-        RobotMap.elevatorSpin.set(0.0);
-        System.out.println("Elevator Spin: 0.0");
-    }
-    }
-
-    /*
      * Resets elevator encoder
      */
     public void reset() {
@@ -109,9 +79,4 @@ public class Elevator extends Subsystem {
 
     public double minimum = 0.0; // Unknown
     public double maximum = 16.5; // Unknown
-
-    public double elevatorFront = 0.0; // Unknown
-    public double elevatorRight = 0.0; // Unknown
-    public double elevatorBack = 0.0; // Unknown
-    public double elevatorLeft = 0.0; // Unknown
 }

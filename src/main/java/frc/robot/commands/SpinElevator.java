@@ -21,12 +21,11 @@ public class SpinElevator extends Command {
      * 
      * 1 - Front
      * 2 - Right
-     * 3 - Back
-     * 4 - Left
+     * 3 - Left
      * 
      */
     public SpinElevator(int position) {
-        requires(Robot.elevator);
+        requires(Robot.elevatorTurn);
 
         /* Set the `target` variable to the value which the command was called with */
         target = position;
@@ -34,7 +33,7 @@ public class SpinElevator extends Command {
         /*
          * Set the current (starting) position of the elevator to determine when to stop
          */
-        startingPosition = Robot.elevator.getSpinPosition();
+        startingPosition = Robot.elevatorTurn.getCurrentPosition();
         
         /* Set the position of the target */
         targetDistance = getTargetDistance(position);
@@ -52,9 +51,9 @@ public class SpinElevator extends Command {
      */
     protected void execute() {
             if (moveRight) {
-                Robot.elevator.spin(-getSpeed(Robot.elevator.getSpinPosition(), targetDistance));
+                Robot.elevatorTurn.spin(-getSpeed(Robot.elevatorTurn.getCurrentPosition(), targetDistance));
             } else {
-                Robot.elevator.spin(getSpeed(Robot.elevator.getSpinPosition(), targetDistance));
+                Robot.elevatorTurn.spin(getSpeed(Robot.elevatorTurn.getCurrentPosition(), targetDistance));
             }
 
     }
@@ -65,13 +64,13 @@ public class SpinElevator extends Command {
     @Override
     protected boolean isFinished() {
         if (moveRight) {
-            if (Robot.elevator.getSpinPosition() >= targetDistance) {
+            if (Robot.elevatorTurn.getCurrentPosition() >= targetDistance) {
                 return true;
             } else {
                 return false;
             }
         } else {
-            if (Robot.elevator.getSpinPosition() <= targetDistance) {
+            if (Robot.elevatorTurn.getCurrentPosition() <= targetDistance) {
                 return true;
             } else {
                 return false;
@@ -83,7 +82,7 @@ public class SpinElevator extends Command {
      * Sets the elevator to hold once the command is finished
      */
     protected void end() {
-        Robot.elevator.spin(0.0);
+        Robot.elevatorTurn.spin(0.0);
     }
 
     /*
@@ -98,13 +97,11 @@ public class SpinElevator extends Command {
      */
     protected double getTargetDistance(int target) {
         if (target == 1) {
-            return Robot.elevator.elevatorFront;
+            return Robot.elevatorTurn.elevatorFront;
         } else if (target == 2) {
-            return Robot.elevator.elevatorRight;
+            return Robot.elevatorTurn.elevatorRight;
         } else if (target == 3) {
-            return Robot.elevator.elevatorBack;
-        } else if (target == 4) {
-            return Robot.elevator.elevatorLeft;
+            return Robot.elevatorTurn.elevatorLeft;
         } else {
             return 0.0;
         }

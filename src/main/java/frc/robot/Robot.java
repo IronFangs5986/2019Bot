@@ -7,6 +7,7 @@ import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.CargoShooter;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.ElevatorTurn;
 import frc.robot.subsystems.HatchHolder;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
   public static CargoShooter cargoShooter;
   public static Elevator elevator;
   public static CargoIntake cargoIntake;
+  public static ElevatorTurn elevatorTurn;
 
   /* Initialize the tracking camera */
   public static Tracking trackingCam;
@@ -56,6 +58,7 @@ public class Robot extends TimedRobot {
     cargoShooter = new CargoShooter();
     elevator = new Elevator();
     cargoIntake = new CargoIntake();
+    elevatorTurn = new ElevatorTurn();
     oi = new OI();
 
     /* Define the tracking camera and start stream 1 */

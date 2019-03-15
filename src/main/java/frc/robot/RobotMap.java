@@ -140,7 +140,7 @@ public class RobotMap {
     /* Set up elevator turn encoder */
     turnEncoder = new Encoder(6, 7, true, Encoder.EncodingType.k4X);
     turnEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-    turnEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 64); // 4 inch wheel
+    rightEncoder.setDistancePerPulse(16.0 / 64); //16 teeth sprocket
     turnEncoder.setReverseDirection(false);
     turnEncoder.reset();
 

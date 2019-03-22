@@ -90,12 +90,14 @@ public class OI {
     reverseCargoIntake.whenReleased(new ActivateCargoIntake(false, true));
     reverseCargoIntake2.whenPressed(new ActivateCargoIntake(true, false));
     reverseCargoIntake2.whenReleased(new ActivateCargoIntake(false, false));
-    hatchBottom.whenPressed(new MoveElevator(1));
-    hatchMiddle.whenPressed(new MoveElevator(2));
-    hatchTop.whenPressed(new MoveElevator(3));
-    cargoBottom.whenPressed(new MoveElevator(4));
-    cargoMiddle.whenPressed(new MoveElevator(5));
-    cargoTop.whenPressed(new MoveElevator(6));
+    
+    //hatchBottom.whenPressed(new MoveElevator(1));
+    //hatchMiddle.whenPressed(new MoveElevator(2));
+    //hatchTop.whenPressed(new MoveElevator(3));
+    //cargoBottom.whenPressed(new MoveElevator(4));
+    //cargoMiddle.whenPressed(new MoveElevator(5));
+    //cargoTop.whenPressed(new MoveElevator(6));
+    
     //forwardElevator.whenPressed(new SpinElevator(1));
     //rightElevator.whenPressed(new SpinElevator(2));
     //backElevator.whenPressed(new SpinElevator(3));

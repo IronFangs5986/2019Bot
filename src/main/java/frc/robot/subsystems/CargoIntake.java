@@ -1,6 +1,6 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,7 +12,7 @@ import frc.robot.RobotMap;
 public class CargoIntake extends Subsystem {
 
     /* Initialize and define the cargo intake motor and solenoid from RobotMap */
-    private final WPI_VictorSPX cargoIntake = RobotMap.cargoIntake;
+    private final WPI_TalonSRX cargoIntake = RobotMap.cargoIntake;
     private final Solenoid cargoIntakePiston = RobotMap.cargoIntakePiston;
 
     public CargoIntake() {}

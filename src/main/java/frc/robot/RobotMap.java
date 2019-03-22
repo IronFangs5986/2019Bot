@@ -1,5 +1,6 @@
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.cscore.MjpegServer;
@@ -19,11 +20,11 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class RobotMap {
 
-  /* Initialize drive Victor variables */
-  public static WPI_VictorSPX FrontLeftMotor;
-  public static WPI_VictorSPX FrontRightMotor;
-  public static WPI_VictorSPX BackLeftMotor;
-  public static WPI_VictorSPX BackRightMotor;
+  /* Initialize drive Talon variables */
+  public static WPI_TalonSRX FrontLeftMotor;
+  public static WPI_TalonSRX FrontRightMotor;
+  public static WPI_TalonSRX BackLeftMotor;
+  public static WPI_TalonSRX BackRightMotor;
 
   /* Initialize DifferentialDrive */
   public static DifferentialDrive robotDrive;
@@ -32,17 +33,17 @@ public class RobotMap {
   public static SpeedControllerGroup leftGroup;
   public static SpeedControllerGroup rightGroup;
 
-  /* Initialize strafing Victor */
-  public static WPI_VictorSPX strafeyBois;
+  /* Initialize strafing Talon */
+  public static WPI_TalonSRX strafeyBois;
 
-  /* Initialize elevator Victor */
-  public static WPI_VictorSPX elevator;
+  /* Initialize elevator Talon */
+  public static WPI_TalonSRX elevator;
 
-  /* Initialize elevator spin Victor */
-  public static WPI_VictorSPX elevatorSpin;
+  /* Initialize elevator spin Talon */
+  public static WPI_TalonSRX elevatorSpin;
 
-  /* Initialize cargo intake Victor */
-  public static WPI_VictorSPX cargoIntake;
+  /* Initialize cargo intake Talon */
+  public static WPI_TalonSRX cargoIntake;
 
   /* Initialize compressor */
   public static Compressor compressor;
@@ -82,10 +83,14 @@ public class RobotMap {
   public static void init() {
 
     /* Define drive Victors with CAN id */
-    FrontLeftMotor = new WPI_VictorSPX(1);
-    FrontRightMotor = new WPI_VictorSPX(2);
-    BackLeftMotor = new WPI_VictorSPX(3);
-    BackRightMotor = new WPI_VictorSPX(4);
+    FrontLeftMotor = new WPI_TalonSRX(1);
+    FrontLeftMotor.setSafetyEnabled(false);
+    FrontRightMotor = new WPI_TalonSRX(2);
+    FrontRightMotor.setSafetyEnabled(false);
+    BackLeftMotor = new WPI_TalonSRX(3);
+    BackLeftMotor.setSafetyEnabled(false);
+    BackRightMotor = new WPI_TalonSRX(4);
+    BackRightMotor.setSafetyEnabled(false);
 
     /* Define SpeedControllerGroups for DifferentialDrive */
     leftGroup = new SpeedControllerGroup(FrontLeftMotor, BackLeftMotor);
@@ -95,25 +100,29 @@ public class RobotMap {
     robotDrive = new DifferentialDrive(leftGroup, rightGroup);
 
     /* Define strafing Victor with CAN id */
-    strafeyBois = new WPI_VictorSPX(5);
+    strafeyBois = new WPI_TalonSRX(5);
+    strafeyBois.setSafetyEnabled(false);
 
     /* Define elevator Victor with CAN id */
-    elevator = new WPI_VictorSPX(6);
+    elevator = new WPI_TalonSRX(6);
+    elevator.setSafetyEnabled(false);
 
     /* Define elevator spin Victor with CAN id */
-    elevatorSpin = new WPI_VictorSPX(7);
+    elevatorSpin = new WPI_TalonSRX(7);
+    elevatorSpin.setSafetyEnabled(false);
 
     /* Define cargo intake Victor with CAN id */
-    cargoIntake = new WPI_VictorSPX(8);
+    cargoIntake = new WPI_TalonSRX(8);
+    cargoIntake.setSafetyEnabled(false);
 
     /* Define compressor */
     compressor = new Compressor(0);
 
     /* Define solenoids */
-    strafePiston = new Solenoid(2);
-    hatchHolderPiston = new Solenoid(0);
-    hatchSliderPiston = new Solenoid(1);
-    cargoShooterPiston = new Solenoid(3);
+    strafePiston = new Solenoid(4);
+    hatchHolderPiston = new Solenoid(1);
+    hatchSliderPiston = new Solenoid(0);
+    cargoShooterPiston = new Solenoid(2);
     //cargoIntakePiston = new Solenoid(4);
 
     /* Set up right encoder */

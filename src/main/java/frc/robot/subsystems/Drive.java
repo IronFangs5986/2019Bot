@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -17,7 +17,7 @@ public class Drive extends Subsystem {
 
     /* Call DifferentialDrive defined in RobotMap */
     DifferentialDrive robotDrive = RobotMap.robotDrive;
-    WPI_VictorSPX strafeyBois = RobotMap.strafeyBois;
+    WPI_TalonSRX strafeyBois = RobotMap.strafeyBois;
 
     public Drive() {}
 
@@ -47,7 +47,7 @@ public class Drive extends Subsystem {
         }
 
         /* Sets arcadeDrive values */
-        robotDrive.arcadeDrive(-moveAxis, rotateAxis);
+        robotDrive.arcadeDrive(moveAxis, rotateAxis);
 
         /*
          * Automatically drop Strafey Bois when they move
@@ -141,11 +141,11 @@ public class Drive extends Subsystem {
      * Tests subsystem to make sure all components in drivetrain work
      */
     public void checkSystem() {
-        WPI_VictorSPX frontRight = RobotMap.FrontRightMotor;
-        WPI_VictorSPX frontLeft = RobotMap.FrontLeftMotor;
-        WPI_VictorSPX backRight = RobotMap.BackRightMotor;
-        WPI_VictorSPX backLeft = RobotMap.BackLeftMotor;
-        WPI_VictorSPX strafeyBois = RobotMap.strafeyBois;
+        WPI_TalonSRX frontRight = RobotMap.FrontRightMotor;
+        WPI_TalonSRX frontLeft = RobotMap.FrontLeftMotor;
+        WPI_TalonSRX backRight = RobotMap.BackRightMotor;
+        WPI_TalonSRX backLeft = RobotMap.BackLeftMotor;
+        WPI_TalonSRX strafeyBois = RobotMap.strafeyBois;
 
         frontRight.set(0);
         frontLeft.set(0);

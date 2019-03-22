@@ -1,6 +1,6 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -13,7 +13,7 @@ import frc.robot.commands.SpinElevator;
 public class Elevator extends Subsystem {
 
     /* Initialize and define the elevator motor from RobotMap */
-    private final WPI_VictorSPX elevator = RobotMap.elevator;
+    private final WPI_TalonSRX elevator = RobotMap.elevator;
     
     public Elevator() {}
 
@@ -33,14 +33,14 @@ public class Elevator extends Subsystem {
      * Sets the elevator to move down
      */
     public void moveDown() {
-        elevator.set(0);
+        //elevator.set(0);
     }
 
     /*
      * Sets the elevator to hold its current position
      */
     public void hold() {
-        elevator.set(-.3);
+        //elevator.set(-.3);
     }
 
     /*

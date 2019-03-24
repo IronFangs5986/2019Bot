@@ -39,7 +39,8 @@ public class Robot extends TimedRobot {
   private int mode = 0;
 
   /* Initialize and define autonomous modes list */
-  String[] autoList = { "Manual Drive", "Move Straight", "Left Rocket", "Right Rocket" };
+  //String[] autoList = { "Manual Drive", "Move Straight", "Left Rocket", "Right Rocket" };
+  String[] autoList = { "Manual Drive", "Move Straight" };
 
   /* Initialize Dashboard */
   Dashboard dashboard = new Dashboard();
@@ -136,22 +137,22 @@ public class Robot extends TimedRobot {
     mode = dashboard.getSelectedAutonomous();
 
     elevatorTurn.reset();
-    
+
     /* Set autonomousCommand to the right command according to the mode variable */
-   // if (mode == 0) {
+    if (mode == 0) {
       /* Manual driving using camera, leave autonomousCommand as null */
-   // } else if (mode == 1) {
+    } else if (mode == 1) {
       /* Move Straight selected*/
-     // autonomousCommand = (Command) new Straight();
+      autonomousCommand = (Command) new Straight();
     //} else if (mode == 2) {
       /* Left Rocket selected*/
      // autonomousCommand = (Command) new LeftDoubleHatch();
     //} else if (mode == 3) {
       /* Right Rocket selected*/
      // autonomousCommand = (Command) new RightDoubleHatch();
-    //} else {
+    } else {
       /* Manual driving using camera as last resort, leave autonomousCommand as null */
-    //}
+    }
 
     /* Start the autonomous command if it has not been started already */
     if (autonomousCommand != null) {

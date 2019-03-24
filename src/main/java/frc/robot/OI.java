@@ -10,6 +10,7 @@ import frc.robot.commands.MoveCargoShooter;
 import frc.robot.commands.MoveElevator;
 import frc.robot.commands.MoveHatchHolder;
 import frc.robot.commands.MoveStrafeyBois;
+import frc.robot.commands.MoveUntilCentered;
 import frc.robot.commands.SlideHatchHolder;
 import frc.robot.commands.SpinElevator;
 
@@ -44,6 +45,7 @@ public class OI {
   public POVButton leftElevator;
   public JoystickButton shootCargo;
   public JoystickButton resetElevatorTurn;
+  public JoystickButton trackTape;
 
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
@@ -74,6 +76,7 @@ public class OI {
     backElevator = new POVButton(operator, 180);
     leftElevator = new POVButton(operator, 270);
     resetElevatorTurn = new JoystickButton(operator, 1);
+    trackTape = new JoystickButton(driver, 10); //UNKOWN
 
     /* Handle button presses */
     //intakeCargo.whenPressed(new ActivateCargoIntake(true, false));
@@ -102,6 +105,8 @@ public class OI {
     
 
     resetElevatorTurn.whenPressed(new SpinElevator(1));
+
+    trackTape.whenPressed(new MoveUntilCentered());
     //forwardElevator.whenPressed(new SpinElevator(1));
     //rightElevator.whenPressed(new SpinElevator(2));
     //backElevator.whenPressed(new SpinElevator(3));

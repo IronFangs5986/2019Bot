@@ -30,12 +30,12 @@ public class ElevatorTurn extends Subsystem {
      */
     public void spin(Double speed) {
         if (Math.abs(speed) >= .2) {
-        if (Math.abs(speed) >= .45) {
+        if (Math.abs(speed) >= .30) {
             if (speed > 0) {
-                RobotMap.elevatorSpin.set(.45);
+                RobotMap.elevatorSpin.set(.30);
                 //System.out.println("Elevator Spin: .35");
             } else {
-                RobotMap.elevatorSpin.set(-.45);
+                RobotMap.elevatorSpin.set(-.30);
                 //System.out.println("Elevator Spin: -.35");
             }
         } else {

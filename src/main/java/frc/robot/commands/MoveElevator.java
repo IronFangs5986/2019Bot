@@ -86,7 +86,8 @@ public class MoveElevator extends Command {
         if (moveUp) {
             if (Robot.elevator.getCurrentPosition() < Robot.elevator.maximum) {
                 //Robot.elevator.moveUp(getSpeed(Robot.elevator.getCurrentPosition(), targetDistance));
-                //Robot.elevator.moveUp(.9);
+                Robot.elevator.moveUp(.9);
+                System.out.println(Robot.elevator.getCurrentPosition());
             }
         } else {
             System.out.println("1");

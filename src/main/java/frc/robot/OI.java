@@ -43,6 +43,7 @@ public class OI {
   public POVButton backElevator;
   public POVButton leftElevator;
   public JoystickButton shootCargo;
+  public JoystickButton resetElevatorTurn;
 
   /* Allows buttons and joysticks to be accessed from anywhere */
   public OI() {
@@ -72,6 +73,7 @@ public class OI {
     rightElevator = new POVButton(operator, 90);
     backElevator = new POVButton(operator, 180);
     leftElevator = new POVButton(operator, 270);
+    resetElevatorTurn = new JoystickButton(operator, 1);
 
     /* Handle button presses */
     //intakeCargo.whenPressed(new ActivateCargoIntake(true, false));
@@ -91,13 +93,15 @@ public class OI {
     reverseCargoIntake2.whenPressed(new ActivateCargoIntake(true, false));
     reverseCargoIntake2.whenReleased(new ActivateCargoIntake(false, false));
     
-    //hatchBottom.whenPressed(new MoveElevator(1));
-    //hatchMiddle.whenPressed(new MoveElevator(2));
-    //hatchTop.whenPressed(new MoveElevator(3));
-    //cargoBottom.whenPressed(new MoveElevator(4));
-    //cargoMiddle.whenPressed(new MoveElevator(5));
-    //cargoTop.whenPressed(new MoveElevator(6));
+    hatchBottom.whenPressed(new MoveElevator(1));
+    hatchMiddle.whenPressed(new MoveElevator(2));
+    hatchTop.whenPressed(new MoveElevator(3));
+    cargoBottom.whenPressed(new MoveElevator(7));
+    cargoMiddle.whenPressed(new MoveElevator(5));
+    cargoTop.whenPressed(new MoveElevator(6));
     
+
+    resetElevatorTurn.whenPressed(new SpinElevator(1));
     //forwardElevator.whenPressed(new SpinElevator(1));
     //rightElevator.whenPressed(new SpinElevator(2));
     //backElevator.whenPressed(new SpinElevator(3));

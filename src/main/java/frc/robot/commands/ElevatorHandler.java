@@ -37,8 +37,8 @@ public class ElevatorHandler extends Command {
             Robot.elevator.moveDown();
         }
     }*/
-   //Robot.elevator.moveUp(OI.operator.getRawAxis(1));
-    Robot.elevator.moveUp(1);
+   Robot.elevator.moveUp(-OI.operator.getRawAxis(1));
+    //Robot.elevator.moveUp(-.5);
 
 
 
@@ -49,8 +49,8 @@ public class ElevatorHandler extends Command {
             //} else {
               //  Robot.elevator.spin(0.0); 
             //}
-       // } else {
-         //   Robot.elevator.spin(0.0);
+        } else {
+            Robot.elevatorTurn.spin(0.0);
         }
 
     }

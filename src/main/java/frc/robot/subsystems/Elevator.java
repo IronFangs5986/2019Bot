@@ -33,14 +33,14 @@ public class Elevator extends Subsystem {
      * Sets the elevator to move down
      */
     public void moveDown() {
-        //elevator.set(0);
+        elevator.set(1);
     }
 
     /*
      * Sets the elevator to hold its current position
      */
     public void hold() {
-        //elevator.set(-.3);
+        elevator.set(-0.5);
     }
 
     /*
@@ -60,22 +60,22 @@ public class Elevator extends Subsystem {
     /*
      * Set public values of elevator distances of minimum and maximum for each target
      */
-    public double bottomHatchLow = 1.5; // Unknown
-    public double bottomHatchHigh = 2.5; // Unknown
-    public double middleHatchLow = 10.5; // Unknown
-    public double middleHatchHigh = 11.5; // Unknown
-    public double topHatchLow = 15 ; // Unknown
-    public double topHatchHigh = 16; // Unknown
+    public double bottomHatchLow = 0.0;
+    public double bottomHatchHigh = 0.0;
+    public double middleHatchLow = 8.6;
+    public double middleHatchHigh = 11.8;
+    public double topHatchLow = 15.9 ;
+    public double topHatchHigh = 18.3;
 
     public double bottomCargoLow = 0.0; // Unknown
     public double bottomCargoHigh = 0.0; // Unknown
-    public double middleCargoLow = 0.0; // Unknown
-    public double middleCargoHigh = 0.0; // Unknown
-    public double topCargoLow = 0.0; // Unknown
-    public double topCargoHigh = 0.0; // Unknown
+    public double middleCargoLow = 6.77;
+    public double middleCargoHigh = 6.77;
+    public double topCargoLow = 14.16;
+    public double topCargoHigh = 14.16;
 
-    public double shipCargoLow = 0.0; // Unknown
-    public double shipCargoHigh = 0.0; // Unknown
+    public double shipCargoLow = 1.2;
+    public double shipCargoHigh = 1.2;
 
     public double minimum = 0.0; // Unknown
     public double maximum = 16.5; // Unknown

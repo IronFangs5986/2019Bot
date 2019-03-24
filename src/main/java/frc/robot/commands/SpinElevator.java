@@ -51,9 +51,10 @@ public class SpinElevator extends Command {
      */
     protected void execute() {
             if (moveRight) {
-                Robot.elevatorTurn.spin(-getSpeed(Robot.elevatorTurn.getCurrentPosition(), targetDistance));
+                Robot.elevatorTurn.spin(0.35);
+                //System.out.println("Moving right: "+);
             } else {
-                Robot.elevatorTurn.spin(getSpeed(Robot.elevatorTurn.getCurrentPosition(), targetDistance));
+                Robot.elevatorTurn.spin(-0.35);
             }
 
     }

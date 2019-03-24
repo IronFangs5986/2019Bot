@@ -102,7 +102,7 @@ public class Robot extends TimedRobot {
 
     /* Print to console for debugging*/
     //System.out.println("Elevator Height: "+Robot.elevator.getCurrentPosition());
-    //System.out.println("Elevator Spin: "+Robot.elevator.getSpinPosition());
+    System.out.println("Elevator Spin: "+Robot.elevatorTurn.getCurrentPosition());
   }
 
   /*
@@ -135,6 +135,8 @@ public class Robot extends TimedRobot {
     /* Set mode variable to the chosen autonomous mode id */
     mode = dashboard.getSelectedAutonomous();
 
+    elevatorTurn.reset();
+    
     /* Set autonomousCommand to the right command according to the mode variable */
    // if (mode == 0) {
       /* Manual driving using camera, leave autonomousCommand as null */
@@ -185,6 +187,8 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
+
+    elevator.reset();
   }
 
   /*
